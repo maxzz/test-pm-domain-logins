@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-      Login A
+      Login B
       <LoginView />
   </div>
 </template>
