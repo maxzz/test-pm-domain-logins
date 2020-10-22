@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-      Login B
-      <LoginView />
+      <LoginView form-name="B" />
   </div>
 </template>
 

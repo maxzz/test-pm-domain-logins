@@ -1,6 +1,11 @@
 <template>
   <div class="home">
-      Home
+      <div>
+          Login A: Not logged in.
+      </div>
+      <div>
+          Login B: Not logged in.
+      </div>
   </div>
 </template>
 
