@@ -5,7 +5,18 @@
         <router-link to="/b">Login B</router-link>
         <!-- <router-link to="/about">About</router-link> -->
     </div>
-    <router-view id="router-view" />
+
+    <!-- <router-view id="router-view" /> -->
+
+    <!-- <transition name="slide">
+        <router-view id="router-view" />
+    </transition> -->
+
+    <router-view v-slot="{ Component }">
+        <transition name="fade">
+            <component :is="Component" />
+        </transition>
+    </router-view>
 </template>
 
 <style lang="scss">
