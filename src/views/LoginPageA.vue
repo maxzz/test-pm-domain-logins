@@ -1,6 +1,7 @@
 <template>
-  <div class="home">
-      <LoginView form-name="A" />
+  <!-- <div class="page-a"> <LoginView form-name="A" /> </div> -->
+  <div class="container">
+    <h2>Welcome to this app!</h2>
   </div>
 </template>
 

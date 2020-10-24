@@ -7,11 +7,10 @@
         "build": "vue-cli-service build",
         "predeploy": "rm -rf dist && yarn build",
         "deploy": "gh-pages -d dist"
-        
     },
     "dependencies": {
         "vue": "^3.0.0",
-        "vue-router": "^4.0.0-0",
+        "vue-router": "^4.0.0-rc.1",
         "vuex": "^4.0.0-0"
     },
     "devDependencies": {

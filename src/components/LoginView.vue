@@ -1,15 +1,17 @@
 <template>
-    <div class="page-title" :class="[formName === 'A' ? 'login-a' : 'login-b']"><span>{{formName}}</span></div>
-
-    <form class="login" :class="[formName === 'A' ? 'login-a' : 'login-b']">
-        <label for="user"> Username</label>
-        <input id="user" type="text" placeholder="Username" autocomplete="username">
-        
-        <label for="pass"> Password</label>
-        <input id="pass" type="password" placeholder="Password" autocomplete="current-password">
-
-        <router-link to="/">Login</router-link>
-    </form>
+    <div class="login-form">
+        <div class="page-title" :class="[formName === 'A' ? 'login-a' : 'login-b']"><span>{{formName}}</span></div>
+    
+        <form class="login" :class="[formName === 'A' ? 'login-a' : 'login-b']">
+            <label for="user"> Username</label>
+            <input id="user" type="text" placeholder="Username" autocomplete="username">
+            
+            <label for="pass"> Password</label>
+            <input id="pass" type="password" placeholder="Password" autocomplete="current-password">
+    
+            <router-link to="/">Login</router-link>
+        </form>
+    </div>
 </template>
 
 <script lang="ts">
