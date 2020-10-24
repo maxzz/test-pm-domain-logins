@@ -13,7 +13,7 @@
     </transition> -->
 
     <router-view v-slot="{ Component }">
-        {{print(Component)}}
+        <!-- {{print(Component)}} -->
         <transition name="route">
             <component :is="Component" />
         </transition>
@@ -21,15 +21,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+// import { defineComponent } from 'vue';
 
-export default defineComponent({
-    methods: {
-        print(component: any) {
-            component && console.log(component.type);
-        }
-    }
-});
+// export default defineComponent({
+//     methods: {
+//         print(component: any) {
+//             console.log(component ? { file: component.type.__file, props: component.type.__props, type: component.type, comp: component } : 'undefined component');
+//         }
+//     }
+// });
 </script>
 
 <style lang="scss">
