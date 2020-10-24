@@ -10,12 +10,12 @@ const routes: Array<RouteRecordRaw> = [
         component: Home
     },
     {
-        path: "/a",
+        path: "/apage",
         name: "LoginPageA",
         component: LoginPageA
     },
     {
-        path: "/b",
+        path: "/bpage",
         name: "LoginPageB",
         component: LoginPageB
     },

@@ -1,8 +1,8 @@
 <template>
     <div id="nav">
         <router-link to="/">Home</router-link>
-        <router-link to="/a">Login A</router-link>
-        <router-link to="/b">Login B</router-link>
+        <router-link to="/apage">Login A</router-link>
+        <router-link to="/bpage">Login B</router-link>
         <!-- <router-link to="/about">About</router-link> -->
     </div>
 
@@ -13,11 +13,24 @@
     </transition> -->
 
     <router-view v-slot="{ Component }">
+        {{print(Component)}}
         <transition name="route">
             <component :is="Component" />
         </transition>
     </router-view>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+    methods: {
+        print(component: any) {
+            component && console.log(component.type);
+        }
+    }
+});
+</script>
 
 <style lang="scss">
     * {
@@ -64,49 +77,49 @@
 
 
 
-    // .route-enter-from,
-    // .route-leave-to {
-    //     opacity: 0;
-    //     transform: translateY(-1000px);
-    // }
+    .route-enter-from,
+    .route-leave-to {
+        opacity: 0;
+        transform: translateY(100px);
+    }
 
-    // .route-enter-active,
-    // .route-leave-active {
-    //     transition: all 5s easy;
-    //     color: red;
-    // }
+    .route-enter-active,
+    .route-leave-active {
+        transition: all .5s ease;
+        color: red;
+    }
 
-    // .route-enter-to,
-    // .route-leave-from {
-    //     opacity: 1;
-    //     transform: translateY(0);
-    // }
+    .route-enter-to,
+    .route-leave-from {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
 
 
-.container {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  max-width: 40rem;
-  margin: 3rem auto;
-  padding: 1rem;
-  border-radius: 12px;
-}
+// .container {
+//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+//   max-width: 40rem;
+//   margin: 3rem auto;
+//   padding: 1rem;
+//   border-radius: 12px;
+// }
 
-.route-enter-from,
-.route-leave-to {
-  opacity: 0;
-  transform: translateY(-30px);
-}
+// .route-enter-from,
+// .route-leave-to {
+//   opacity: 0;
+//   transform: translateY(-30px);
+// }
 
-.route-enter-active,
-.route-leave-active {
-  transition: all 0.3s ease;
-}
+// .route-enter-active,
+// .route-leave-active {
+//   transition: all 0.3s ease;
+// }
 
-.route-enter-to,
-.route-leave-from {
-  opacity: 1;
-  transform: translateY(0);
-}
+// .route-enter-to,
+// .route-leave-from {
+//   opacity: 1;
+//   transform: translateY(0);
+// }
 
 </style>

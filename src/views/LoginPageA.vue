@@ -1,8 +1,6 @@
 <template>
-  <!-- <div class="page-a"> <LoginView form-name="A" /> </div> -->
-  <div class="container">
-    <h2>Welcome to this app!</h2>
-  </div>
+  <div class="page-a"> <LoginView form-name="A" /> </div>
+  <!-- <div class="container"> <h2>Welcome to this app!</h2> </div> -->
 </template>
 
 <script lang="ts">
