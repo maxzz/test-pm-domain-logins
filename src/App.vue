@@ -14,7 +14,7 @@
 
     <router-view v-slot="{ Component }">
         <!-- {{print(Component)}} -->
-        <transition name="route">
+        <transition name="route" mode="out-in">
             <component :is="Component" />
         </transition>
     </router-view>
