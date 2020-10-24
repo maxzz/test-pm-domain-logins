@@ -6,14 +6,14 @@
         <!-- <router-link to="/about">About</router-link> -->
     </div>
 
-    <!-- <router-view id="router-view" /> -->
+    <router-view id="router-view" />
 
-    <router-view v-slot="{ Component }">
+    <!-- <router-view v-slot="{ Component }">
         {{print(Component)}}
-        <transition name="route" mode="out-in">
+        <transition name="route">
             <component :is="Component" />
         </transition>
-    </router-view>
+    </router-view> -->
 </template>
 
 <script lang="ts">
@@ -75,8 +75,8 @@ export default defineComponent({
 
     .route-enter-from,
     .route-leave-to {
-        opacity: 0.5;
-        //transform: translate3d(-1000px, 0, 0);
+        //opacity: 0;
+        transform: translate3d(30px, 0, 0);
     }
 
     .route-enter-active {

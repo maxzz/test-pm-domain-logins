@@ -15,7 +15,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
     .page-a {
-        background-color: green;
+        //background-color: green;
         //height: 100%;
     }
 

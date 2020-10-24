@@ -22,7 +22,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
     .page-b {
-        background-color: yellow;
+        //background-color: yellow;
         //height: 100%;
     }
 
