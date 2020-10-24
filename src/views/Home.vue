@@ -1,10 +1,12 @@
 <template>
-  <div class="page-home">
+  <div class="page-home top-container">
       <div>
           Login A: Not logged in.
+          Username <input type="text">
       </div>
       <div>
           Login B: Not logged in.
+          Password <input type="text">
       </div>
   </div>
 </template>
@@ -16,10 +18,10 @@ export default defineComponent({
 });
 </script>
 
-,<style lang="scss" scoped>
+<style lang="scss" scoped>
     .page-home {
         background-color: tomato;
-        height: 100%;
+        //height: 100%;
     }
 
 </style>

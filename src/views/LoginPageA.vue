@@ -1,5 +1,5 @@
 <template>
-  <div class="page-a"> <LoginView form-name="A" /> </div>
+  <div class="page-a top-container"> <LoginView form-name="A" /> </div>
   <!-- <div class="container"> <h2>Welcome to this app!</h2> </div> -->
 </template>
 
@@ -11,3 +11,11 @@ export default defineComponent({
     components: { LoginView },
 });
 </script>
+
+<style lang="scss" scoped>
+    .page-a {
+        background-color: green;
+        //height: 100%;
+    }
+
+</style>

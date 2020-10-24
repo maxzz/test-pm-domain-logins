@@ -1,35 +1,31 @@
 <template>
     <div id="nav">
         <router-link to="/">Home</router-link>
-        <router-link to="/apage">Login A</router-link>
-        <router-link to="/bpage">Login B</router-link>
+        <router-link :to="{name: 'LoginA'}">Login A</router-link>
+        <router-link :to="{name: 'LoginB'}">Login B</router-link>
         <!-- <router-link to="/about">About</router-link> -->
     </div>
 
     <!-- <router-view id="router-view" /> -->
 
-    <!-- <transition name="slide">
-        <router-view id="router-view" />
-    </transition> -->
-
     <router-view v-slot="{ Component }">
-        <!-- {{print(Component)}} -->
-        <transition name="route" mode="out-in">
+        {{print(Component)}}
+        <transition name="route">
             <component :is="Component" />
         </transition>
     </router-view>
 </template>
 
 <script lang="ts">
-// import { defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 
-// export default defineComponent({
-//     methods: {
-//         print(component: any) {
-//             console.log(component ? { file: component.type.__file, props: component.type.__props, type: component.type, comp: component } : 'undefined component');
-//         }
-//     }
-// });
+export default defineComponent({
+    methods: {
+        print(component: any) {
+            console.log(component ? { file: component.type.__file, props: component.type.__props, type: component.type, comp: component } : 'undefined component');
+        }
+    }
+});
 </script>
 
 <style lang="scss">
@@ -69,30 +65,32 @@
         }
     }
 
-    // #router-view {
-    //     text-align: center;
-    //     width: 100%;
-    //     height: 100%;
-    // }
+    .top-container {
+        text-align: center;
+        width: 100%;
+        height: 100%;
+    }
 
 
 
     .route-enter-from,
     .route-leave-to {
-        opacity: 0;
-        transform: translateY(100px);
+        //opacity: 0;
+        transform: translate3d(-1000px, 0, 0);
     }
 
     .route-enter-active,
     .route-leave-active {
-        transition: all .5s ease;
+        transition: transform 2s ease-out 2s;
         color: red;
     }
 
     .route-enter-to,
     .route-leave-from {
-        opacity: 1;
-        transform: translateY(0);
+        //opacity: 1;
+        transform: translateX(0);
+
+        //transition: all .3s ease;
     }
 
 

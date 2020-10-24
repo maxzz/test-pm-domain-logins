@@ -11,12 +11,12 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: "/apage",
-        name: "LoginPageA",
+        name: "LoginA",
         component: LoginPageA
     },
     {
         path: "/bpage",
-        name: "LoginPageB",
+        name: "LoginB",
         component: LoginPageB
     },
 
