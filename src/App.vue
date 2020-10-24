@@ -6,7 +6,7 @@
         <!-- <router-link to="/about">About</router-link> -->
     </div>
 
-    <router-view id="router-view" />
+    <!-- <router-view id="router-view" /> -->
 
     <!-- <router-view v-slot="{ Component }">
         {{print(Component)}}
@@ -14,6 +14,17 @@
             <component :is="Component" />
         </transition>
     </router-view> -->
+
+    <router-view v-slot="{ Component }">
+        {{print(Component)}}
+        <transition
+            enter-active-class="animated bounce"
+            leave-active-class="animated pulse"
+        >
+            <component :is="Component" />
+        </transition>
+    </router-view>
+
 </template>
 
 <script lang="ts">
@@ -65,11 +76,11 @@ export default defineComponent({
         }
     }
 
-    .top-container {
-        text-align: center;
-        width: 100%;
-        height: 100%;
-    }
+    // .top-container {
+    //     text-align: center;
+    //     width: 100%;
+    //     height: 100%;
+    // }
 
 
 
