@@ -1,9 +1,10 @@
 <template>
   <div class="page-a top-container"> <LoginView form-name="A" /> </div>
-  <!-- <div class="container"> <h2>Welcome to this app!</h2> </div> -->
 </template>
 
 <script lang="ts">
+//<!-- <div class="container"> <h2>Welcome to this app!</h2> </div> -->
+
 import { defineComponent } from 'vue';
 import LoginView from "@/components/LoginView.vue";
 

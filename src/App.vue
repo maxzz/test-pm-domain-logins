@@ -10,7 +10,7 @@
 
     <router-view v-slot="{ Component }">
         {{print(Component)}}
-        <transition name="route">
+        <transition name="route" mode="out-in">
             <component :is="Component" />
         </transition>
     </router-view>
@@ -75,15 +75,18 @@ export default defineComponent({
 
     .route-enter-from,
     .route-leave-to {
-        //opacity: 0;
-        transform: translate3d(-1000px, 0, 0);
+        opacity: 0.5;
+        //transform: translate3d(-1000px, 0, 0);
     }
 
-    .route-enter-active,
-    .route-leave-active {
-        transition: transform 2s ease-out 2s;
-        color: red;
+    .route-enter-active {
+        transition: all .2s ease-out;
+        //color: red;
     }
+    // .route-leave-active {
+    //     //transition: transform 2s ease-out 2s;
+    //     color: red;
+    // }
 
     .route-enter-to,
     .route-leave-from {
