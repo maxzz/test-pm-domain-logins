@@ -8,9 +8,9 @@
 
     <!-- <router-view id="router-view" /> -->
 
-    <router-view v-slot="{ Component }">
+    <router-view v-slot="{ Component, route }">
         <!-- {{print(Component)}} -->
-        <transition name="route">
+        <transition :name="route.meta && route.meta.transition">
             <component :is="Component" />
         </transition>
     </router-view>
