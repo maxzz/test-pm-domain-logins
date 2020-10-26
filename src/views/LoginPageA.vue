@@ -1,5 +1,5 @@
 <template>
-  <div class="page-a top-container"> <LoginView form-name="A" /> </div>
+  <div class="page-a top-container"> <LoginView form-name="a" /> </div>
 </template>
 
 <script lang="ts">

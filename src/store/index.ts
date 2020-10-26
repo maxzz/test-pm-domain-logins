@@ -4,12 +4,16 @@ export default createStore({
     state: {
         logins: {
             a: {
-                name: "username 1",
-                pass: "password 1"
+                user: "username 1",
+                pass: "password 1",
+                disp: 'A',
+                logged: false,
             },
             b: {
-                name: "username 2",
-                pass: "password 2"
+                user: "username 2",
+                pass: "password 2",
+                disp: 'B',
+                logged: false,
             }
         }
     },

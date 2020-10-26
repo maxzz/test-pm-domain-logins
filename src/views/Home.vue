@@ -1,15 +1,15 @@
 <template>
     <div class="page-home top-container">
-        <div v-for="(login, idx) of logins" :key="idx" class="website loggedin">
+        <div v-for="(login, idx) of logins" :key="idx" class="website" :class="{loggedin: login.logged}">
             <div class="form-title">
-                Login website {{(''+idx).toUpperCase()}}
+                Login website {{login.disp}}
             </div>
             <div class="status">
                 Not logged in.
             </div>
             <div class="fields">
                 <div class="lbl">Username</div>
-                <input class="inp" type="text" v-model="login.name" />
+                <input class="inp" type="text" v-model="login.user" />
                 <div class="lbl">Password</div>
                 <input class="inp" type="text" v-model="login.pass" />
             </div>

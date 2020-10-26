@@ -1,12 +1,13 @@
 <template>
     <div class="login-form">
-        <div class="page-title" :class="[formName === 'A' ? 'login-a' : 'login-b']"><span>{{formName}}</span></div>
+        <!-- {{login}} -->
+        <div class="page-title" :class="{'login-a': formName === 'a', 'login-b': formName === 'b'}"><span>{{login.disp}}</span></div>
     
-        <form class="login" :class="[formName === 'A' ? 'login-a' : 'login-b']">
-            <label for="user"> Username</label>
+        <form class="login" :class="[formName === 'a' ? 'login-a' : 'login-b']">
+            <label for="user">Username</label>
             <input id="user" type="text" placeholder="Username" autocomplete="username">
             
-            <label for="pass"> Password</label>
+            <label for="pass">Password</label>
             <input id="pass" type="password" placeholder="Password" autocomplete="current-password">
     
             <router-link to="/">Login</router-link>
@@ -15,16 +16,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+    import { defineComponent } from 'vue';
+    import { mapState } from 'vuex';
 
-export default defineComponent({
-    props: {
-        formName: {
-            type: String,
-            required: true
-        }
-    },
-});
+    export default defineComponent({
+        props: {
+            formName: {
+                type: String,
+                required: true
+            }
+        },
+        computed: {
+            ...mapState(['logins']),
+            login(): any {
+                return this.logins[this.formName];
+            }
+        },
+    });
 </script>
 
 <style lang="scss" scoped>

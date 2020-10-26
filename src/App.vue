@@ -1,8 +1,8 @@
 <template>
     <div id="nav">
         <router-link to="/">Home</router-link>
-        <router-link :to="{name: 'LoginA'}">Login A</router-link>
-        <router-link :to="{name: 'LoginB'}">Login B</router-link>
+        <router-link :to="{name: 'LoginA'}">Login {{logins.a.disp}}</router-link>
+        <router-link :to="{name: 'LoginB'}">Login {{logins.b.disp}}</router-link>
         <!-- <router-link to="/about">About</router-link> -->
     </div>
 
@@ -29,12 +29,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { mapState } from 'vuex';
 
 export default defineComponent({
     methods: {
         print(component: any) {
             console.log(component ? { file: component.type.__file, props: component.type.__props, type: component.type, comp: component } : 'undefined component');
         }
+    },
+    computed: {
+        ...mapState(['logins'])
     }
 });
 </script>
