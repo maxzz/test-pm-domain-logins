@@ -3,6 +3,8 @@
         <router-link to="/">Home</router-link>
         <router-link :to="{name: 'LoginA'}">Login {{logins.a.disp}}</router-link>
         <router-link :to="{name: 'LoginB'}">Login {{logins.b.disp}}</router-link>
+        <router-link :to="{name: 'ChangeA'}">Change {{logins.a.disp}}</router-link>
+        <router-link :to="{name: 'ChangeB'}">Change {{logins.b.disp}}</router-link>
         <!-- <router-link to="/about">About</router-link> -->
     </div>
 
@@ -32,11 +34,11 @@ import { defineComponent } from 'vue';
 import { mapState } from 'vuex';
 
 export default defineComponent({
-    methods: {
-        print(component: any) {
-            console.log(component ? { file: component.type.__file, props: component.type.__props, type: component.type, comp: component } : 'undefined component');
-        }
-    },
+    // methods: {
+    //     print(component: any) {
+    //         console.log(component ? { file: component.type.__file, props: component.type.__props, type: component.type, comp: component } : 'undefined component');
+    //     }
+    // },
     computed: {
         ...mapState(['logins'])
     }
@@ -63,12 +65,12 @@ export default defineComponent({
 
     #nav {
         display: grid;
-        justify-content: start;
         grid-auto-flow: column;
+        //justify-content: start;
         background-color: #eee;
 
         a {
-            padding: 1em;
+            padding: 1em 0;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.2em;
@@ -80,18 +82,20 @@ export default defineComponent({
         }
     }
 
-    .route-enter-from,
-    .route-leave-to {
-        transform: scale(0.99);
+    .route-enter-from
+    // , .route-leave-to
+     {
+        transform: scaleY(0.99);
     }
 
     .route-enter-active {
         transition: all .2s ease;
     }
 
-    .route-enter-to,
-    .route-leave-from {
-        transform: scale(0.99);
+    .route-enter-to
+    // , .route-leave-from
+     {
+        transform: scaleY(0.99);
     }
 
 

@@ -44,7 +44,6 @@
         span {
             font-size: 3em;
             padding: .2em .5em;
-            
 
             border: 2px solid gray;
             background-color: red;
@@ -59,6 +58,7 @@
         max-width: 20em;
 
         border-radius: 3px;
+        box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.3);
 
         display: grid;
         gap: 1em .4em;
@@ -101,12 +101,12 @@
     .login-a {
         background-color: rebeccapurple;
         color: #eee;
-        border: 1px solid #eee;
+        //border: 1px solid #eee;
     }
 
     .login-b {
         background-color: darkolivegreen;
         color: #eee;
-        border: 1px solid red;
+        //border: 1px solid red;
     }
 </style>
