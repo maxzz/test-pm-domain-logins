@@ -1,27 +1,89 @@
 <template>
-  <div class="page-home top-container">
-      <div>
-          Login A: Not logged in.
-          Username <input type="text">
-      </div>
-      <div>
-          Login B: Not logged in.
-          Password <input type="text">
-      </div>
-  </div>
+    <div class="page-home top-container">
+        <div v-for="(login, idx) of logins" :key="idx" class="website loggedin">
+            <div class="form-title">
+                Login website {{(''+idx).toUpperCase()}}
+            </div>
+            <div class="status">
+                Not logged in.
+            </div>
+            <div class="fields">
+                <div class="lbl">Username</div>
+                <input class="inp" type="text" v-model="login.name" />
+                <div class="lbl">Password</div>
+                <input class="inp" type="text" v-model="login.pass" />
+            </div>
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
+import { mapState } from "vuex";
 
 export default defineComponent({
+    computed: {
+        ...mapState(["logins"]),
+    },
 });
 </script>
 
 <style lang="scss" scoped>
     .page-home {
-        background-color: tomato;
+        padding: 1em;
+
+        display: grid;
+        gap: 1em;
+        //align-content: start;
         //height: 100%;
+
+        //background-color: tomato;
     }
 
+    .website {
+        padding: 2em .4em;
+
+        border-radius: 3px;
+
+        background-color: lavenderblush;
+        border: 1px dotted red;
+
+        &.loggedin {
+            background-color: beige;
+            border: 1px dotted green;
+        }
+
+        .form-title {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .status {
+            margin-bottom: 2em;
+            font-size: .8em;
+        }
+
+        .fields {
+            display: flex;
+            place-items: center;
+            //margin-bottom: 1em;
+
+            & > * {
+                margin: 0.2em;
+            }
+
+            .lbl {
+                font-size: .9em;
+            }
+
+            .inp {
+                padding: 0.4em;
+                max-width: 8em;
+                border-radius: 3px;
+                border: 1px solid #ddd;
+                font: inherit;
+            }
+        }
+    }
 </style>
