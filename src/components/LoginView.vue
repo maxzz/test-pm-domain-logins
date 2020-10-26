@@ -1,17 +1,39 @@
 <template>
     <div class="login-form">
-        <!-- {{login}} -->
-        <div class="page-title" :class="{'login-a': formName === 'a', 'login-b': formName === 'b'}"><span>{{login.disp}}</span></div>
-    
-        <form class="login" :class="[formName === 'a' ? 'login-a' : 'login-b']">
-            <label for="user">Username</label>
-            <input id="user" type="text" placeholder="Username" autocomplete="username">
-            
-            <label for="pass">Password</label>
-            <input id="pass" type="password" placeholder="Password" autocomplete="current-password">
-    
-            <router-link to="/">Login</router-link>
-        </form>
+        <div class="page-title" :class="{
+            'login-a': formName === 'a',
+            'login-b': formName === 'b'}">
+            <span>{{login.disp}}</span>
+        </div>
+
+        <div v-if="isClogin">
+            <form class="login" :class="[formName === 'a' ? 'login-a' : 'login-b']">
+                <input area-hidden="true" type="email" name="username" autocomplete="username" value="maxzz" style="display: none">
+
+                <label for="pass">Password</label>
+                <input id="cpass1" type="password" placeholder="Password" autocomplete="old-password">
+
+                <label for="pass">Password</label>
+                <input id="cpass2" type="password" placeholder="Password" autocomplete="current-password">
+
+                <label for="pass">Password</label>
+                <input id="cpass3" type="password" placeholder="Password" autocomplete="confirm-password">
+
+                <router-link to="/">Change</router-link>
+            </form>
+        </div>
+        <div v-else>
+            <form class="login" :class="[formName === 'a' ? 'login-a' : 'login-b']">
+                <label for="user">Username</label>
+                <input id="user" type="text" placeholder="Username" autocomplete="username">
+
+                <label for="pass">Password</label>
+                <input id="pass" type="password" placeholder="Password" autocomplete="current-password">
+
+                <router-link to="/">Login</router-link>
+            </form>
+        </div>
+
     </div>
 </template>
 
@@ -24,7 +46,11 @@
             formName: {
                 type: String,
                 required: true
-            }
+            },
+            isClogin: {
+                type: Boolean,
+                default: false
+            },
         },
         computed: {
             ...mapState(['logins']),
@@ -69,7 +95,7 @@
             padding: .4em;
             border-radius: 3px;
             border: 1px solid #eee;
-            
+
             &:focus {
                 outline: 1px solid red;
             }
