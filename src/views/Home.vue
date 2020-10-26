@@ -13,6 +13,7 @@
                 <div class="lbl">Password</div>
                 <input class="inp" type="text" v-model="login.pass" />
             </div>
+            <button class="btn-logout">Logout</button>
         </div>
     </div>
 </template>
@@ -41,7 +42,7 @@ export default defineComponent({
     }
 
     .website {
-        padding: 2em .4em;
+        padding: 2em .4em .4em;
 
         border-radius: 3px;
 
@@ -84,6 +85,11 @@ export default defineComponent({
                 border: 1px solid #ddd;
                 font: inherit;
             }
+        }
+
+        .btn-logout {
+            margin-top: 1.2em;
+            padding: .4em;
         }
     }
 </style>
