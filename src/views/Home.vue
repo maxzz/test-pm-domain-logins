@@ -1,12 +1,11 @@
 <template>
     <div class="page-home top-container">
         <div v-for="(login, idx) of logins" :key="idx" class="website" :class="{loggedin: login.logged}">
-            {{login}}
             <div class="form-title">
                 Login website {{login.disp}}
             </div>
             <div class="status">
-                Not logged in.
+                {{login.logged ? 'Logged in.' : 'Not logged in.'}}
             </div>
             <div class="fields">
                 <div class="lbl">Username</div>
@@ -14,33 +13,29 @@
                 <div class="lbl">Password</div>
                 <input class="inp" type="text" v-model="login.pass" />
             </div>
-            <button class="btn-logout" @click="onLogout(idx)">Logout</button>
+            <button class="btn-logout" @click="onLogout(idx)" :dissabled="!login.logged">{{login.logged ? 'Log out' : 'Log in'}}</button>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent } from "vue";
-import { mapState, useStore } from "vuex";
+import { useStore } from "vuex";
 
 export default defineComponent({
-    computed: {
-        ...mapState(["logins"]),
-    },
     setup() {
         let store = useStore();
-
         let logins = computed(() => store.state.logins);
 
         const onLogout = (form: string | number) => {
             store.dispatch('setLoggedIn', {
                 form,
-                val: false,
+                val: !logins.value[form].logged,
             });
         };
 
         return {
-            // logins,
+            logins,
             onLogout,
         };
     }
