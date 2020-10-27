@@ -4,15 +4,19 @@
             <div class="form-title">
                 Login website {{login.disp}}
             </div>
+
             <div class="status">
                 {{login.logged ? 'Logged in.' : 'Not logged in.'}}
             </div>
+
             <div class="fields">
                 <div class="lbl">Username</div>
                 <input class="inp" type="text" v-model="login.user" />
+
                 <div class="lbl">Password</div>
                 <input class="inp" type="text" v-model="login.pass" />
             </div>
+            
             <button class="btn-logout" @click="onLogout(idx)" :dissabled="!login.logged">{{login.logged ? 'Log out' : 'Log in'}}</button>
         </div>
     </div>
@@ -28,7 +32,7 @@ export default defineComponent({
         let logins = computed(() => store.state.logins);
 
         const onLogout = (form: string | number) => {
-            store.dispatch('setLoggedIn', {
+            store.dispatch('loggedIn', {
                 form,
                 val: !logins.value[form].logged,
             });

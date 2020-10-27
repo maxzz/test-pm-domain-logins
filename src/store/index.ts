@@ -1,6 +1,17 @@
 import { createLogger, createStore } from "vuex";
 
-export default createStore({
+export interface Store {
+    logins: {
+        [key: string]: {
+            user: string,
+            pass: string,
+            disp: string,
+            logged: boolean,
+        }
+    }
+}
+
+export default createStore<Store>({
     state: {
         logins: {
             a: {
@@ -23,7 +34,7 @@ export default createStore({
         }
     },
     actions: {
-        setLoggedIn({ commit }, payload) {
+        loggedIn({ commit }, payload) {
             commit('setLoggedIn', payload);
         }
     },
