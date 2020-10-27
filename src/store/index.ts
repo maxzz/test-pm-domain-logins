@@ -17,7 +17,17 @@ export default createStore({
             }
         }
     },
-    mutations: {},
-    actions: {},
-    modules: {}
+    mutations: {
+        setLoggedIn(state, payload: { form: 'a' | 'b'; val: boolean }) {
+            state.logins[payload.form].logged = payload.val;
+        }
+    },
+    actions: {
+        setLoggedIn({ commit }, payload) {
+            commit('setLoggedIn', payload);
+        }
+    },
+    modules: {
+
+    },
 });

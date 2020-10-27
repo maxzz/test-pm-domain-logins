@@ -32,7 +32,6 @@
                     <input id="cpass3" type="password" placeholder="Confirm new password" autocomplete="confirm-password">
     
                     <button @click.prevent="onSubmit">Change</button>
-                    <!-- <router-link :to="{name: 'Home'}">Change</router-link> -->
                 </div>
             </form>
         </div>
@@ -49,7 +48,7 @@
                     <label for="pass">Password</label>
                     <input id="pass" type="password" placeholder="Password" autocomplete="current-password">
     
-                    <router-link :to="{name: 'Home'}">Login</router-link>
+                    <button @click.prevent="onSubmit">Login</button>
                 </div>
             </form>
         </div>
@@ -80,10 +79,10 @@
         },
         methods: {
             onSubmit(e: MouseEvent) {
-                //e.preventDefault();
-                console.log('aa', this.$router);
+                if (!this.isClogin) {
+                    this.login.logged = true;
+                }
                 this.$router.push({name: 'Home'});
-                console.log('bb', this.$router);
             }
         }
     });
@@ -168,7 +167,7 @@
 
         $btn: #efefef;
 
-        button, a {
+        button {
             grid-column: 1 / -1;
             justify-self: right;
 
