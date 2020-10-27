@@ -3,11 +3,9 @@
         <div class="page-title" :class="{
             'login-a': formName === 'a',
             'login-b': formName === 'b'}">
-            <span>{{login.disp}}</span>
+            <span>{{currentForm.disp}}</span>
         </div>
 
-        {{login}}
-        <br>
         {{currentForm}}
         
         <div v-if="isClogin">
@@ -73,19 +71,11 @@
                 default: false
             },
         },
-        computed: {
-            ...mapState(['logins']),
-            login(): any {
-                return this.logins[this.formName];
-            }
-        },
         methods: {
             onSubmit(e: MouseEvent) {
                 if (!this.isClogin) {
-                    //this.login.logged = true;
                     this.setLogged(this.formName, true);
                 }
-
                 this.$router.push({name: 'Home'});
             }
         },
