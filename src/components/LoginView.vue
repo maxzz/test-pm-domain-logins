@@ -8,10 +8,10 @@
 
         {{login}}
         <br>
-        {{formID}}
+        {{currentForm}}
         
         <div v-if="isClogin">
-            <form class="form" :class="[formName === 'a' ? 'login-a' : 'login-b']">
+            <form class="form" :class="formClass()">
                 <div class="svg-bkg">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path class="b" d="M21.66 10.37a.62.62 0 0 0 .07-.19l.75-4a1 1 0 0 0-2-.36l-.37 2a9.22 9.22 0 0 0-16.58.84 1 1 0 0 0 .55 1.3 1 1 0 0 0 1.31-.55A7.08 7.08 0 0 1 12.07 5a7.17 7.17 0 0 1 6.24 3.58l-1.65-.27a1 1 0 1 0-.32 2l4.25.71h.16a.93.93 0 0 0 .34-.06.33.33 0 0 0 .1-.06.78.78 0 0 0 .2-.11l.08-.1a1.07 1.07 0 0 0 .14-.16.58.58 0 0 0 .05-.16z" />
@@ -36,7 +36,7 @@
             </form>
         </div>
         <div v-else>
-            <form class="form" :class="[formName === 'a' ? 'login-a' : 'login-b']">
+            <form class="form" :class="formClass()">
                 <div class="svg-bkg">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path class="a" d="M9.543,5.728h3.392a.565.565,0,0,1,.565.565V9.12A1.979,1.979,0,0,1,10.469,10.8"/><path class="a" d="M5.966,3.468a1.7,1.7,0,1,1,1.32,1.107"/><path class="a" d="M4.508,10.25a3.109,3.109,0,0,0,6.166-.565V6.293a.565.565,0,0,0-.565-.565H7.283"/><rect class="a" x="0.5" y="3.467" width="6.783" height="6.783" rx="1"/><line class="a" x1="2.196" y1="5.163" x2="5.587" y2="5.163"/><line class="a" x1="3.891" y1="5.163" x2="3.891" y2="8.554"/><circle class="a" cx="11.522" cy="3.467" r="1.13"/></svg>
                 </div>
@@ -90,10 +90,13 @@
         setup(props) {
             let store = useStore<Store>();
 
-            let formID = computed(() => store.state.logins[props.formName]);
+            let currentForm = computed(() => store.state.logins[props.formName]);
+
+            const formClass = () => props.formName === 'a' ? 'login-a' : 'login-b';
 
             return {
-                formID,
+                currentForm,
+                formClass,
             };
         }
     });
