@@ -6,8 +6,6 @@
             <span>{{currentForm.disp}}</span>
         </div>
 
-        {{currentForm}}
-        
         <div v-if="isClogin">
             <form class="form" :class="formClass()">
                 <div class="svg-bkg">
@@ -29,7 +27,7 @@
                     <label for="pass">Confirm</label>
                     <input id="cpass3" :type="passwordType" v-model="passwords.p3" placeholder="Confirm new password" autocomplete="confirm-password">
     
-                    <label class="reveal"><input type="checkbox" v-model="revealPasswords"> Reveal</label>
+                    <label class="reveal"><input type="checkbox" v-model="revealPasswords"> Reveal passwords</label>
                     <button @click.prevent="onSubmit">Change</button>
                 </div>
             </form>
@@ -47,11 +45,14 @@
                     <label for="pass">Password</label>
                     <input id="pass" :type="passwordType" v-model="thisPass" placeholder="Password" autocomplete="current-password">
     
-                    <label class="reveal"><input type="checkbox" v-model="revealPasswords"> Reveal</label>
+                    <label class="reveal"><input type="checkbox" v-model="revealPasswords"> Reveal password</label>
                     <button @click.prevent="onSubmit">Login</button>
                 </div>
             </form>
         </div>
+
+        <!-- <br>
+        {{currentForm}} -->
 
     </div>
 </template>
@@ -153,7 +154,7 @@
     .form {
         padding: 2em;
         margin: 0 auto;
-        max-width: 20em;
+        max-width: 22em;
         row-gap: 1em;
 
         display: grid;
@@ -191,16 +192,17 @@
     }
 
     .fields {
-
         display: grid;
         gap: 1em .4em;
-        grid-template-columns: auto 1fr;
+        grid-template-columns: minmax(5em, auto) 1fr;
         align-items: center;
 
         font-size: .9rem;
 
-        input {
+        input[type=text],
+        input[type=password] {
             padding: .4em;
+            min-width: 10em;
             border-radius: 3px;
             border: 1px solid #eee;
             font-size: inherit;
@@ -213,11 +215,16 @@
         $btn: #efefef;
 
         .reveal {
-            grid-column: 1 / -1;
+            user-select: none;
+            white-space: nowrap;
+            color: #bbb;
+            
+            input:focus {
+                outline: none;
+            }
         }
 
         button {
-            grid-column: 1 / -1;
             justify-self: right;
 
             font-size: .9em;
