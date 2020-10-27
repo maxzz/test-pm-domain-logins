@@ -21,14 +21,15 @@
                     <input area-hidden="true" type="email" name="username" autocomplete="username" value="maxzz" style="display: none">
     
                     <label for="pass">Current</label>
-                    <input id="cpass1" type="password" placeholder="Current password" autocomplete="old-password">
+                    <input id="cpass1" :type="passwordType" v-model="passwords.p1" placeholder="Current password" autocomplete="old-password">
     
                     <label for="pass">New</label>
-                    <input id="cpass2" type="password" placeholder="New password" autocomplete="current-password">
+                    <input id="cpass2" :type="passwordType" v-model="passwords.p2" placeholder="New password" autocomplete="current-password">
     
                     <label for="pass">Confirm</label>
-                    <input id="cpass3" type="password" placeholder="Confirm new password" autocomplete="confirm-password">
+                    <input id="cpass3" :type="passwordType" v-model="passwords.p3" placeholder="Confirm new password" autocomplete="confirm-password">
     
+                    <label class="reveal"><input type="checkbox" v-model="revealPasswords"> Reveal</label>
                     <button @click.prevent="onSubmit">Change</button>
                 </div>
             </form>
@@ -44,8 +45,9 @@
                     <input id="user" type="text" v-model="thisUser" placeholder="Username" autocomplete="username">
     
                     <label for="pass">Password</label>
-                    <input id="pass" type="password" v-model="thisPass" placeholder="Password" autocomplete="current-password">
+                    <input id="pass" :type="passwordType" v-model="thisPass" placeholder="Password" autocomplete="current-password">
     
+                    <label class="reveal"><input type="checkbox" v-model="revealPasswords"> Reveal</label>
                     <button @click.prevent="onSubmit">Login</button>
                 </div>
             </form>
@@ -55,7 +57,7 @@
 </template>
 
 <script lang="ts">
-    import { computed, defineComponent, ref } from 'vue';
+    import { computed, defineComponent, reactive, ref } from 'vue';
     import { mapState, useStore } from 'vuex';
     import { PayloadLoggedIn, PayloadLoginCredentials, Store } from '@/store';
 
@@ -73,7 +75,23 @@
         },
         methods: {
             onSubmit(e: MouseEvent) {
-                if (!this.isClogin) {
+                if (this.isClogin) {
+                    // TODO: check if logged in; check is new password is different from the current password.
+
+                    const isUserCorrect = this.passwords.p1 === this.thisPass;
+                    if (!isUserCorrect) {
+                        alert('Current password is incorrect');
+                        return;
+                    }
+
+                    const isPswMatched = this.passwords.p2 === this.passwords.p3 && this.passwords.p2.trim(); // not empty
+                    if (!isPswMatched) {
+                        alert('New password not confirmed');
+                        return;
+                    }
+
+                    this.setLoginCredentials(this.formName, this.thisUser, this.passwords.p2);
+                } else {
                     this.setLoginCredentials(this.formName, this.thisUser, this.thisPass);
                     this.setLogged(this.formName, true);
                 }
@@ -88,6 +106,15 @@
             const thisUser = ref(currentForm.value.user);
             const thisPass = ref(currentForm.value.pass);
 
+            const passwords = reactive({
+                p1: currentForm.value.pass,
+                p2: currentForm.value.pass + '1',
+                p3: currentForm.value.pass + '1',
+            });
+
+            const revealPasswords = ref(false);
+            const passwordType = computed(() => revealPasswords.value ? 'text' : 'password');
+
             const setLogged = (form: string, val: boolean) => store.dispatch('loggedIn', {form: form, val} as PayloadLoggedIn);
             const setLoginCredentials = (form: string, user: string, pass: string) => store.dispatch('loginCredentials', {form, user, pass} as PayloadLoginCredentials);
 
@@ -96,6 +123,9 @@
                 formClass,
                 thisUser,
                 thisPass,
+                passwords,
+                revealPasswords,
+                passwordType,
                 setLogged,
                 setLoginCredentials,
             };
@@ -181,6 +211,10 @@
         }
 
         $btn: #efefef;
+
+        .reveal {
+            grid-column: 1 / -1;
+        }
 
         button {
             grid-column: 1 / -1;
