@@ -5,6 +5,8 @@
             'login-b': formName === 'b'}">
             <span>{{login.disp}}</span>
         </div>
+
+        {{login}}
         
         <div v-if="isClogin">
             <form class="form" :class="[formName === 'a' ? 'login-a' : 'login-b']">
@@ -29,7 +31,8 @@
                     <label for="pass">Confirm</label>
                     <input id="cpass3" type="password" placeholder="Confirm new password" autocomplete="confirm-password">
     
-                    <router-link to="/">Change</router-link>
+                    <button @click.prevent="onSubmit">Change</button>
+                    <!-- <router-link :to="{name: 'Home'}">Change</router-link> -->
                 </div>
             </form>
         </div>
@@ -46,7 +49,7 @@
                     <label for="pass">Password</label>
                     <input id="pass" type="password" placeholder="Password" autocomplete="current-password">
     
-                    <router-link to="/">Login</router-link>
+                    <router-link :to="{name: 'Home'}">Login</router-link>
                 </div>
             </form>
         </div>
@@ -75,6 +78,14 @@
                 return this.logins[this.formName];
             }
         },
+        methods: {
+            onSubmit(e: MouseEvent) {
+                //e.preventDefault();
+                console.log('aa', this.$router);
+                this.$router.push({name: 'Home'});
+                console.log('bb', this.$router);
+            }
+        }
     });
 </script>
 
@@ -157,7 +168,7 @@
 
         $btn: #efefef;
 
-        a {
+        button, a {
             grid-column: 1 / -1;
             justify-self: right;
 
