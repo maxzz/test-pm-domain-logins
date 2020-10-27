@@ -17,13 +17,13 @@ export type PayloadLoggedIn = {
 }
 
 export type PayloadLoginCredentials = {
-    form: string;
+    form: 'a' | 'b';
     user: string;
     pass: string;
 }
 
-export default createStore<Store>({
-    state: {
+function defaultStore() {
+    return {
         logins: {
             a: {
                 user: "username 1",
@@ -38,7 +38,11 @@ export default createStore<Store>({
                 logged: false,
             }
         }
-    },
+    };
+}
+
+export default createStore<Store>({
+    state: defaultStore(),
     mutations: {
         setLoggedIn(state, payload: PayloadLoggedIn) {
             state.logins[payload.form].logged = payload.val;
