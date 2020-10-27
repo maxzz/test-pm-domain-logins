@@ -5,7 +5,7 @@
                 Login website {{login.disp}}
             </div>
 
-            <div class="status">
+            <div class="log-state" :class="{'logged-state': login.logged}">
                 {{login.logged ? 'Logged in.' : 'Not logged in.'}}
             </div>
 
@@ -16,34 +16,34 @@
                 <div class="lbl">Password</div>
                 <input class="inp" type="text" v-model="login.pass" />
             </div>
-            
+
             <button class="btn-logout" @click="onLogout(idx)" :dissabled="!login.logged">{{login.logged ? 'Log out' : 'Log in'}}</button>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
-import { useStore } from "vuex";
+    import { computed, defineComponent } from "vue";
+    import { useStore } from "vuex";
 
-export default defineComponent({
-    setup() {
-        let store = useStore();
-        let logins = computed(() => store.state.logins);
+    export default defineComponent({
+        setup() {
+            let store = useStore();
+            let logins = computed(() => store.state.logins);
 
-        const onLogout = (form: string | number) => {
-            store.dispatch('loggedIn', {
-                form,
-                val: !logins.value[form].logged,
-            });
-        };
+            const onLogout = (form: string | number) => {
+                store.dispatch('loggedIn', {
+                    form,
+                    val: !logins.value[form].logged,
+                });
+            };
 
-        return {
-            logins,
-            onLogout,
-        };
-    }
-});
+            return {
+                logins,
+                onLogout,
+            };
+        }
+    });
 </script>
 
 <style lang="scss" scoped>
@@ -77,9 +77,13 @@ export default defineComponent({
             font-size: 1.2em;
         }
 
-        .status {
+        .log-state {
             margin-bottom: 2em;
             font-size: .8em;
+            color: red;
+        }
+        .log-state.logged-state {
+            color: green;
         }
 
         .fields {

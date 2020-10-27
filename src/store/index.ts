@@ -11,6 +11,17 @@ export interface Store {
     }
 }
 
+export type PayloadLoggedIn = {
+    form: 'a' | 'b';
+    val: boolean;
+}
+
+export type PayloadLoginCredentials = {
+    form: string;
+    user: string;
+    pass: string;
+}
+
 export default createStore<Store>({
     state: {
         logins: {
@@ -29,17 +40,24 @@ export default createStore<Store>({
         }
     },
     mutations: {
-        setLoggedIn(state, payload: { form: 'a' | 'b'; val: boolean }) {
+        setLoggedIn(state, payload: PayloadLoggedIn) {
             state.logins[payload.form].logged = payload.val;
+        },
+        setLoginCredentials(state, payload: PayloadLoginCredentials) {
+            let login = state.logins[payload.form];
+            login.user = payload.user;
+            login.pass = payload.pass;
         }
     },
     actions: {
-        loggedIn({ commit }, payload) {
+        loggedIn({ commit }, payload: PayloadLoggedIn) {
             commit('setLoggedIn', payload);
+        },
+        loginCredentials({ commit }, payload: PayloadLoginCredentials) {
+            commit('setLoginCredentials', payload);
         }
     },
     modules: {
-
     },
-    plugins: process.env.NODE_ENV !== 'production' ? [createLogger()] : []
+    plugins: process.env.NODE_ENV === 'production' ? [] : [createLogger()]
 });

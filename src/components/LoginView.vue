@@ -41,10 +41,10 @@
 
                 <div class="fields">
                     <label for="user">Username</label>
-                    <input id="user" type="text" placeholder="Username" autocomplete="username">
+                    <input id="user" type="text" v-model="thisUser" placeholder="Username" autocomplete="username">
     
                     <label for="pass">Password</label>
-                    <input id="pass" type="password" placeholder="Password" autocomplete="current-password">
+                    <input id="pass" type="password" v-model="thisPass" placeholder="Password" autocomplete="current-password">
     
                     <button @click.prevent="onSubmit">Login</button>
                 </div>
@@ -55,9 +55,9 @@
 </template>
 
 <script lang="ts">
-    import { computed, defineComponent } from 'vue';
+    import { computed, defineComponent, ref } from 'vue';
     import { mapState, useStore } from 'vuex';
-    import { Store } from '@/store';
+    import { PayloadLoggedIn, PayloadLoginCredentials, Store } from '@/store';
 
 
     export default defineComponent({
@@ -74,24 +74,30 @@
         methods: {
             onSubmit(e: MouseEvent) {
                 if (!this.isClogin) {
+                    this.setLoginCredentials(this.formName, this.thisUser, this.thisPass);
                     this.setLogged(this.formName, true);
                 }
                 this.$router.push({name: 'Home'});
             }
         },
         setup(props) {
-            let store = useStore<Store>();
-
-            let currentForm = computed(() => store.state.logins[props.formName]);
-
+            const store = useStore<Store>();
+            const currentForm = computed(() => store.state.logins[props.formName]);
             const formClass = () => props.formName === 'a' ? 'login-a' : 'login-b';
 
-            const setLogged = (formID: string, val: boolean) => store.dispatch('loggedIn', {form: formID, val});
+            const thisUser = ref(currentForm.value.user);
+            const thisPass = ref(currentForm.value.pass);
+
+            const setLogged = (form: string, val: boolean) => store.dispatch('loggedIn', {form: form, val} as PayloadLoggedIn);
+            const setLoginCredentials = (form: string, user: string, pass: string) => store.dispatch('loginCredentials', {form, user, pass} as PayloadLoginCredentials);
 
             return {
                 currentForm,
                 formClass,
+                thisUser,
+                thisPass,
                 setLogged,
+                setLoginCredentials,
             };
         }
     });
