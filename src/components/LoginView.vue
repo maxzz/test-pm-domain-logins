@@ -82,8 +82,10 @@
         methods: {
             onSubmit(e: MouseEvent) {
                 if (!this.isClogin) {
-                    this.login.logged = true;
+                    //this.login.logged = true;
+                    this.setLogged(this.formName, true);
                 }
+
                 this.$router.push({name: 'Home'});
             }
         },
@@ -94,9 +96,12 @@
 
             const formClass = () => props.formName === 'a' ? 'login-a' : 'login-b';
 
+            const setLogged = (formID: string, val: boolean) => store.dispatch('loggedIn', {form: formID, val});
+
             return {
                 currentForm,
                 formClass,
+                setLogged,
             };
         }
     });
