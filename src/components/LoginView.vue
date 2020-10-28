@@ -35,7 +35,34 @@
         <div v-else>
             <form class="form" :class="formClass()">
                 <div class="svg-bkg">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path class="a" d="M9.543,5.728h3.392a.565.565,0,0,1,.565.565V9.12A1.979,1.979,0,0,1,10.469,10.8"/><path class="a" d="M5.966,3.468a1.7,1.7,0,1,1,1.32,1.107"/><path class="a" d="M4.508,10.25a3.109,3.109,0,0,0,6.166-.565V6.293a.565.565,0,0,0-.565-.565H7.283"/><rect class="a" x="0.5" y="3.467" width="6.783" height="6.783" rx="1"/><line class="a" x1="2.196" y1="5.163" x2="5.587" y2="5.163"/><line class="a" x1="3.891" y1="5.163" x2="3.891" y2="8.554"/><circle class="a" cx="11.522" cy="3.467" r="1.13"/></svg>
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path class="a" d="M9.543,5.728h3.392a.565.565,0,0,1,.565.565V9.12A1.979,1.979,0,0,1,10.469,10.8"/><path class="a" d="M5.966,3.468a1.7,1.7,0,1,1,1.32,1.107"/><path class="a" d="M4.508,10.25a3.109,3.109,0,0,0,6.166-.565V6.293a.565.565,0,0,0-.565-.565H7.283"/><rect class="a" x="0.5" y="3.467" width="6.783" height="6.783" rx="1"/><line class="a" x1="2.196" y1="5.163" x2="5.587" y2="5.163"/><line class="a" x1="3.891" y1="5.163" x2="3.891" y2="8.554"/><circle class="a" cx="11.522" cy="3.467" r="1.13"/></svg> -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 145 145">
+  <!-- GI: 'user svg' https://www.svgrepo.com/svg/91079/avatar -->
+  <circle cx="72.4" cy="72.4" r="72.4" fill="#f5c002"/>
+  <defs>
+    <circle id="a" cx="72.4" cy="72.4" r="72.4"/>
+  </defs>
+  <clipPath id="b">
+    <use xlink:href="#a" overflow="visible"/>
+  </clipPath>
+  <g clip-path="url(#b)">
+    <path d="M107 117c-5-9-35-14-35-14s-30 5-34 14l-7 28h82s-2-17-6-28z" fill="#f1c9a5"/>
+    <path d="M72 103s30 5 35 14c4 11 6 28 6 28H72v-42z" fill="#e4b692"/>
+    <path fill="#f1c9a5" d="M64 85h16v27H64z"/>
+    <path fill="#e4b692" d="M72 85h8v27h-8z"/>
+    <path d="M64 97c2 4 8 7 12 7l5-1V85H64v12z" opacity=".1" fill="#ddac8c"/>
+    <path d="M93 67c0-17-9-26-21-26-11 0-21 9-21 26 0 23 10 31 21 31 12 0 21-9 21-31z" fill="#f1c9a5"/>
+    <path d="M90 79c-4 0-6-4-6-9 1-5 5-8 9-8 3 1 6 5 5 9 0 5-4 9-8 8z" fill="#e4b692"/>
+    <path d="M47 71c-1-4 2-8 5-9 4 0 8 3 8 8 1 5-1 9-5 9-4 1-8-3-8-8z" fill="#f1c9a5"/>
+    <path d="M93 67c0-17-9-26-21-26v57c12 0 21-9 21-31z" fill="#e4b692"/>
+    <path d="M91 82c-1 3-3 7-6 7-5 0-8-4-13-4s-8 4-12 4c-3 0-5-4-7-7v-6 7s1 8 4 11c3 2 11 6 15 6 5 0 13-4 15-6 4-3 5-11 5-11v-7l-1 6zM62 44s4 16 26 24l-3-8 10 7c3-7 7-16-2-21-8-6-28-15-31-2z" fill="#303030"/>
+    <path d="M55 66s2-18 8-22c-5-2-14 5-13 10l5 12z" fill="#303030"/>
+    <path d="M107 117c-3-5-14-9-23-12a12 12 0 01-23 0c-9 3-21 7-23 12l-7 28h82s-2-17-6-28z" fill="#fb621e"/>
+    <path d="M60 108c0 6 6 11 12 11 7 0 12-5 13-11 8 2 18 6 22 10v-1c-3-5-14-9-23-12a12 12 0 01-23 0c-9 3-21 7-23 12l-1 1c5-4 15-8 23-10z" opacity=".2" fill="#e53d0c"/>
+    <path d="M57 106a15 15 0 0030 0l-3-1a12 12 0 01-23 0l-4 1z" fill="#e53d0c"/>
+    <path d="M76 91s-1-3-4-3c-2 0-3 3-3 3h7z" fill="#fff"/>
+  </g>
+</svg>
                 </div>
 
                 <div class="fields">

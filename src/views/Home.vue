@@ -2,7 +2,7 @@
     <div class="page-home top-container">
         <div v-for="(login, idx) of logins" :key="idx" class="website" :class="{loggedin: login.logged}">
             <div class="form-title">
-                Login website {{login.disp}}
+                Website login {{login.disp}}
             </div>
 
             <div class="log-state" :class="{'logged-state': login.logged}">

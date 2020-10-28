@@ -14,17 +14,6 @@ export interface IStore {
     }
 }
 
-export type PayloadLoggedIn = {
-    form: 'a' | 'b';
-    val: boolean;
-}
-
-export type PayloadLoginCredentials = {
-    form: 'a' | 'b';
-    user: string;
-    pass: string;
-}
-
 export const STORAGE_KEY = 'test-domain-logins.vue';
 
 function defaultStore(): IStore {
@@ -53,7 +42,7 @@ function initialStoreData() {
     let str = localStorage.getItem(STORAGE_KEY);
     let st;
     try {
-        st = str && JSON.parse(str);
+        st = str && JSON.parse(str); //TODO: this is weak data structure validation.
     } catch (error) {
     }
     !st && (st = defaultStore());
@@ -61,9 +50,20 @@ function initialStoreData() {
 }
 
 function localStoragePlugin(store: Store<IStore>) {
-    store.subscribe((mutation, { logins }) => {
-        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(logins));
+    store.subscribe((mutation, state) => {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     })
+}
+
+export type PayloadLoggedIn = {
+    form: 'a' | 'b';
+    val: boolean;
+}
+
+export type PayloadLoginCredentials = {
+    form: 'a' | 'b';
+    user: string;
+    pass: string;
 }
 
 export default createStore<IStore>({
