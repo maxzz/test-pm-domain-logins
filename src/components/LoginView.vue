@@ -60,7 +60,7 @@
 <script lang="ts">
     import { computed, defineComponent, reactive, ref } from 'vue';
     import { mapState, useStore } from 'vuex';
-    import { PayloadLoggedIn, PayloadLoginCredentials, Store } from '@/store';
+    import { PayloadLoggedIn, PayloadLoginCredentials, IStore } from '@/store';
 
 
     export default defineComponent({
@@ -100,7 +100,7 @@
             }
         },
         setup(props) {
-            const store = useStore<Store>();
+            const store = useStore<IStore>();
             const currentForm = computed(() => store.state.logins[props.formName]);
             const formClass = () => props.formName === 'a' ? 'login-a' : 'login-b';
 

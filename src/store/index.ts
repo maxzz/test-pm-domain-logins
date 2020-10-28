@@ -1,6 +1,6 @@
-import { createLogger, createStore } from "vuex";
+import { createLogger, createStore, Store } from "vuex";
 
-export interface Store {
+export interface IStore {
     logins: {
         [key: string]: {
             user: string,
@@ -8,6 +8,9 @@ export interface Store {
             disp: string,
             logged: boolean,
         }
+    },
+    settings: {
+        reveal: boolean;
     }
 }
 
@@ -22,7 +25,9 @@ export type PayloadLoginCredentials = {
     pass: string;
 }
 
-function defaultStore() {
+export const STORAGE_KEY = 'test-domain-logins.vue';
+
+function defaultStore(): IStore {
     return {
         logins: {
             a: {
@@ -37,12 +42,32 @@ function defaultStore() {
                 disp: 'B',
                 logged: false,
             }
+        },
+        settings: {
+            reveal: false,
         }
     };
 }
 
-export default createStore<Store>({
-    state: defaultStore(),
+function initialStoreData() {
+    let str = localStorage.getItem(STORAGE_KEY);
+    let st;
+    try {
+        st = str && JSON.parse(str);
+    } catch (error) {
+    }
+    !st && (st = defaultStore());
+    return st;
+}
+
+function localStoragePlugin(store: Store<IStore>) {
+    store.subscribe((mutation, { logins }) => {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(logins));
+    })
+}
+
+export default createStore<IStore>({
+    state: initialStoreData(),
     mutations: {
         setLoggedIn(state, payload: PayloadLoggedIn) {
             state.logins[payload.form].logged = payload.val;
@@ -63,5 +88,5 @@ export default createStore<Store>({
     },
     modules: {
     },
-    plugins: process.env.NODE_ENV === 'production' ? [] : [createLogger()]
+    plugins: process.env.NODE_ENV === 'production' ? [localStoragePlugin] : [localStoragePlugin, createLogger()]
 });

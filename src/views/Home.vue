@@ -25,10 +25,11 @@
 <script lang="ts">
     import { computed, defineComponent } from "vue";
     import { useStore } from "vuex";
+    import { IStore } from '@/store';
 
     export default defineComponent({
         setup() {
-            let store = useStore();
+            let store = useStore<IStore>();
             let logins = computed(() => store.state.logins);
 
             const onLogout = (form: string | number) => {
