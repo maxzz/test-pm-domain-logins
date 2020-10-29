@@ -1,7 +1,7 @@
 <template>
     <div class="nav">
         <div class="nav-logo">
-            AAA
+            Dm
         </div>
         <div class="nav-links">
             <router-link to="/">Home</router-link>
@@ -11,23 +11,6 @@
             <router-link :to="{name: 'ChangeB'}">Change {{logins.b.disp}}</router-link>
             <!-- <router-link to="/about">About</router-link> -->
         </div>
-    </div>
-
-    <div class="nav">
-        <div class="nav-logo">
-            AAA
-        </div>
-        <ul class="nav-links">
-            <li>
-                <a href="">aAA</a>
-            </li>
-            <li>
-                <a href="">aAA</a>
-            </li>
-            <li>
-                <a href="">aAA</a>
-            </li>
-        </ul>
     </div>
 
     <!-- <router-view id="router-view" /> -->
@@ -89,54 +72,42 @@ export default defineComponent({
 
     .nav {
         display: flex;
-        // flex-direction: row;
-        // flex-basis: auto;
-        // flex-grow: 1;
-        // margin-left: auto;
+        align-items: center;
+        margin: 0 auto;
+        padding: 0 1em;
+        background-color: #f7f7f7;
 
-        background-color: red;
-        list-style: none;
+        .nav-logo {
+            display: grid;
+            place-items: center;
+            background-color: rgb(250, 220, 220);
+            border: 1px dotted red;
+            border-radius: 3px;
+            font-weight: bold;
+            width: 2em;
+            height: 2em;
+        }
 
         .nav-links {
             display: flex;
             flex-direction: row;
             margin-left: auto;
 
-            background-color: green;
-
             a {
-                padding: 1em 0;
-                margin-left: 1em;
-                font-size: 1.2em;
-                //font-weight: bold;
+                padding: 1em .4em;
+                margin-left: .4em;
+                font-weight: bold;
                 text-decoration: none;
+                color: #5c6064;
+
+                &.router-link-exact-active {
+                    color: #42b983;
+                }
             }
         }
-
-        li {
-            list-style: none;
-        }
-
-        // display: grid;
-        // grid-auto-flow: column;
-        // //justify-content: start;
-        // background-color: #f7f7f7;
-
-        // a {
-        //     padding: 1em 0;
-        //     text-decoration: none;
-        //     font-weight: bold;
-        //     font-size: 1.2em;
-        //     color: #80858a;
-
-        //     &.router-link-exact-active {
-        //         color: #42b983;
-        //     }
-        // }
     }
 
-    .route-enter-from
-    // , .route-leave-to
+    .route-enter-from    // , .route-leave-to
      {
         transform: scaleY(0.99);
     }
@@ -145,8 +116,7 @@ export default defineComponent({
         transition: all .2s ease;
     }
 
-    .route-enter-to
-    // , .route-leave-from
+    .route-enter-to    // , .route-leave-from
      {
         transform: scaleY(0.99);
     }
