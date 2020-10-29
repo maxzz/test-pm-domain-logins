@@ -1,11 +1,33 @@
 <template>
-    <div id="nav">
-        <router-link to="/">Home</router-link>
-        <router-link :to="{name: 'LoginA'}">Login {{logins.a.disp}}</router-link>
-        <router-link :to="{name: 'LoginB'}">Login {{logins.b.disp}}</router-link>
-        <router-link :to="{name: 'ChangeA'}">Change {{logins.a.disp}}</router-link>
-        <router-link :to="{name: 'ChangeB'}">Change {{logins.b.disp}}</router-link>
-        <!-- <router-link to="/about">About</router-link> -->
+    <div class="nav">
+        <div class="nav-logo">
+            AAA
+        </div>
+        <div class="nav-links">
+            <router-link to="/">Home</router-link>
+            <router-link :to="{name: 'LoginA'}">Login {{logins.a.disp}}</router-link>
+            <router-link :to="{name: 'LoginB'}">Login {{logins.b.disp}}</router-link>
+            <router-link :to="{name: 'ChangeA'}">Change {{logins.a.disp}}</router-link>
+            <router-link :to="{name: 'ChangeB'}">Change {{logins.b.disp}}</router-link>
+            <!-- <router-link to="/about">About</router-link> -->
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="nav-logo">
+            AAA
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="">aAA</a>
+            </li>
+            <li>
+                <a href="">aAA</a>
+            </li>
+            <li>
+                <a href="">aAA</a>
+            </li>
+        </ul>
     </div>
 
     <!-- <router-view id="router-view" /> -->
@@ -56,30 +78,61 @@ export default defineComponent({
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        
         color: #2c3e50;
+        background-color: #fffaf6;
 
         width: 100%;
         height: 100vh;
         overflow: hidden;
     }
 
-    #nav {
-        display: grid;
-        grid-auto-flow: column;
-        //justify-content: start;
-        background-color: #eee;
+    .nav {
+        display: flex;
+        // flex-direction: row;
+        // flex-basis: auto;
+        // flex-grow: 1;
+        // margin-left: auto;
 
-        a {
-            padding: 1em 0;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2em;
-            color: #80858a;
+        background-color: red;
+        list-style: none;
 
-            &.router-link-exact-active {
-                color: #42b983;
+        .nav-links {
+            display: flex;
+            flex-direction: row;
+            margin-left: auto;
+
+            background-color: green;
+
+            a {
+                padding: 1em 0;
+                margin-left: 1em;
+                font-size: 1.2em;
+                //font-weight: bold;
+                text-decoration: none;
             }
         }
+
+        li {
+            list-style: none;
+        }
+
+        // display: grid;
+        // grid-auto-flow: column;
+        // //justify-content: start;
+        // background-color: #f7f7f7;
+
+        // a {
+        //     padding: 1em 0;
+        //     text-decoration: none;
+        //     font-weight: bold;
+        //     font-size: 1.2em;
+        //     color: #80858a;
+
+        //     &.router-link-exact-active {
+        //         color: #42b983;
+        //     }
+        // }
     }
 
     .route-enter-from
