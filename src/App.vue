@@ -37,6 +37,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { mapState } from 'vuex';
+//require('./assets/fonts/YanoneKaffeesatz-Regular.ttf');
 
 export default defineComponent({
     // methods: {
@@ -58,16 +59,34 @@ export default defineComponent({
     }
 
     #app {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
+        //font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         
         color: #2c3e50;
         background-color: #fffaf6;
 
+        font-family: "Yanone Kaffeesatz", sans-serif;
+
         width: 100%;
         height: 100vh;
         overflow: hidden;
+    }
+
+    // @font-face {
+    //     font-family: "Yanone Kaffeesatz";
+    //     //src: url("/src/assets/fonts/YanoneKaffeesatz-VariableFont_wght.ttf") format("truetype");
+    //     font-weight: 300;
+    //     src: url("/src/assets/fonts/YanoneKaffeesatz-Regular.ttf") format("truetype");
+    // }
+    // @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@400&display=swap');
+    // @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap');
+    // @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;700&display=swap');
+    @font-face {
+        font-family: "Yanone Kaffeesatz";
+        //src: url("/src/assets/fonts/YanoneKaffeesatz-VariableFont_wght.ttf") format("truetype");
+        //src: url("./assets/fonts/YanoneKaffeesatz-Regular.ttf") format("truetype");
+        src: url("./assets/fonts/YanoneKaffeesatz-VariableFont_wght.ttf") format("truetype");
     }
 
     .nav {
@@ -77,6 +96,10 @@ export default defineComponent({
         padding: 0 1em;
         background-color: #f7f7f7;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+        
+        font-family: "Yanone Kaffeesatz", sans-serif;
+        font-weight: 300;
+        font-size: 1.3em;
 
         .nav-logo {
             display: grid;
