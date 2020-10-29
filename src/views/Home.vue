@@ -1,5 +1,5 @@
 <template>
-    <div class="page-home top-container">
+    <div class="page-home">
         <div v-for="(login, idx) of logins" :key="idx" class="website" :class="{loggedin: login.logged}">
             <div class="form-title">
                 Website login {{login.disp}}

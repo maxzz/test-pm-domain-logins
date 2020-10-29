@@ -1,5 +1,6 @@
 <template>
     <div class="login-view">
+        <div class="overlay"></div>
         <div class="page-title" :class="{
             'login-a': formName === 'a',
             'login-b': formName === 'b'}">
@@ -47,9 +48,6 @@
                 </div>
             </form>
         </div>
-
-        <!-- <br>
-        {{currentForm}} -->
 
     </div>
 </template>
@@ -135,10 +133,30 @@
 </script>
 
 <style lang="scss" scoped>
+    .login-view {
+        //<div style="background-color: red"></div>
+        position: relative;
+        height: 100%;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,.5);
+        z-index: 1;
+    }
+
     .page-title {
         text-align: left;
         height: 7em;
         margin-bottom: 2em;
+        background-color: var(--main-color);
+
+        position: relative;
+        z-index: 2;
 
         span {
             font-size: 3em;
@@ -155,12 +173,15 @@
         padding: 2em;
         margin: 0 auto;
         max-width: 22em;
-        row-gap: 1em;
+
+        position: relative;
+        z-index: 2;
 
         display: grid;
+        row-gap: 1em;
 
         border-radius: 3px;
-        box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.3);
+        box-shadow: 2px 2px 2px 0px rgba(0,0,0,.3);
 
         .svg-bkg {
             display: inline-block;
@@ -248,8 +269,10 @@
 
     .login-a {
         --main-color: rebeccapurple;
+        --main-bkg-color: #f7f7f7;
         
-        background-color: var(--main-color);
+        background-color: var(--main-bkg-color);
+        border: 1px solid #eee;
         color: #eee;
         //border: 1px solid #eee;
     }
