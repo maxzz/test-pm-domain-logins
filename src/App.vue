@@ -62,33 +62,27 @@ export default defineComponent({
 
     #app {
         //font-family: Avenir, Helvetica, Arial, sans-serif;
+        font-family: "Yanone Kaffeesatz", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         
         color: #2c3e50;
         background-color: #fffaf6;
 
-        font-family: "Yanone Kaffeesatz", sans-serif;
-
         width: 100%;
         height: 100vh;
         overflow: hidden;
     }
 
-    // @font-face {
-    //     font-family: "Yanone Kaffeesatz";
-    //     //src: url("/src/assets/fonts/YanoneKaffeesatz-VariableFont_wght.ttf") format("truetype");
-    //     font-weight: 300;
-    //     src: url("/src/assets/fonts/YanoneKaffeesatz-Regular.ttf") format("truetype");
-    // }
     // @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@400&display=swap');
     // @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap');
     // @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;700&display=swap');
     @font-face {
         font-family: "Yanone Kaffeesatz";
-        //src: url("/src/assets/fonts/YanoneKaffeesatz-VariableFont_wght.ttf") format("truetype");
         //src: url("./assets/fonts/YanoneKaffeesatz-Regular.ttf") format("truetype");
-        src: url("./assets/fonts/YanoneKaffeesatz-VariableFont_wght.ttf") format("truetype");
+        src: url("./assets/fonts/YanoneKaffeesatz-VariableFont_wght.ttf") format("truetype supports variations"),
+            url("./assets/fonts/YanoneKaffeesatz-VariableFont_wght.ttf") format("truetype-variations");
+        font-weight: 200 700;
     }
 
     .nav {
