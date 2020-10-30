@@ -3,8 +3,10 @@
         <div class="nav-logo">
             Dm
         </div>
+        <router-link to="/">Home</router-link>
+
         <div class="nav-links">
-            <router-link to="/">Home</router-link>
+            <!-- <router-link to="/">Home</router-link> -->
             <router-link :to="{name: 'LoginA'}">Login {{logins.a.disp}}</router-link>
             <router-link :to="{name: 'LoginB'}">Login {{logins.b.disp}}</router-link>
             <router-link :to="{name: 'ChangeA'}">Change {{logins.a.disp}}</router-link>
@@ -117,18 +119,27 @@ export default defineComponent({
             flex-direction: row;
             margin-left: auto;
 
-            a {
-                padding: 1em .4em;
-                margin-left: .4em;
-                font-weight: bold;
-                text-decoration: none;
-                color: #5c6064;
+            // :nth-child(n) {
+            //     border: 1px solid blue;
+            // }
+            // :nth-child(2n) {
+            //     border: 1px solid red;
+            // }
+        }
 
-                &.router-link-exact-active {
-                    color: #42b983;
-                }
+        a {
+            padding: .8em .2em;
+            margin-left: .2em;
+            font-weight: bold;
+            text-decoration: none;
+            //letter-spacing: .5px;
+            color: #5c6064;
+
+            &.router-link-exact-active {
+                color: #42b983;
             }
         }
+
     }
 
     .top-container {
