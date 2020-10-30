@@ -61,8 +61,7 @@ export default defineComponent({
     }
 
     #app {
-        //font-family: Avenir, Helvetica, Arial, sans-serif;
-        font-family: "Yanone Kaffeesatz", sans-serif;
+        font-family: "Yanone", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         
@@ -74,12 +73,8 @@ export default defineComponent({
         overflow: hidden;
     }
 
-    // @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@400&display=swap');
-    // @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700&display=swap');
-    // @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;700&display=swap');
     @font-face {
-        font-family: "Yanone Kaffeesatz";
-        //src: url("./assets/fonts/YanoneKaffeesatz-Regular.ttf") format("truetype");
+        font-family: "Yanone";
         src: url("./assets/fonts/YanoneKaffeesatz-VariableFont_wght.ttf") format("truetype supports variations"),
             url("./assets/fonts/YanoneKaffeesatz-VariableFont_wght.ttf") format("truetype-variations");
         font-weight: 200 700;
@@ -93,7 +88,7 @@ export default defineComponent({
         background-color: #f7f7f7;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
         
-        font-family: "Yanone Kaffeesatz", sans-serif;
+        font-family: "Yanone", sans-serif;
         font-weight: 300;
         font-size: 1.3em;
 
