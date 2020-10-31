@@ -2,17 +2,12 @@
     <div class="login-view">
         <div class="overlay"></div>
 
-        <!-- <div class="page-title" :class="{ 'login-a': formName === 'a', 'login-b': formName === 'b'}">
-            <span>{{currentForm.disp}}</span>
-        </div> -->
-
         <div v-if="isClogin">
             <form class="form" :class="formClass()">
-                <div class="svg-bkg">
+                <div class="form-name">{{currentForm.disp}}</div>
+
+                <div class="form-logo">
                     <SvgChange />
-                    <div class="page-title" :class="{ 'login-a': formName === 'a', 'login-b': formName === 'b'}">
-                        <span>{{currentForm.disp}}</span>
-                    </div>
                 </div>
 
                 <div class="fields">
@@ -34,11 +29,10 @@
         </div>
         <div v-else>
             <form class="form" :class="formClass()">
-                <div class="svg-bkg">
+                <div class="form-name">{{currentForm.disp}}</div>
+
+                <div class="form-logo">
                     <SvgLogin />
-                    <div class="page-title" :class="{ 'login-a': formName === 'a', 'login-b': formName === 'b'}">
-                        <span>{{currentForm.disp}}</span>
-                    </div>
                 </div>
 
                 <div class="fields">
@@ -169,26 +163,24 @@
         z-index: 1;
     }
 
-    $form-label-height: 3em;
+    $form-label-font: 3em;
+    $form-label-height: 56px;
 
-    .page-title {
+    .form-name {
         position: absolute;
-        top: -$form-label-height / 2;
-        right: 1.8em;
+        top: -($form-label-height / 2);
+        right: .6em;
+        width: $form-label-height;
+        height: $form-label-height;
         
         display: grid;
         place-items: center;
 
-        span {
-            font-size: $form-label-height;
-            padding: .2em .5em;
-
-            border-radius: 7px;
-            border: 1px dotted maroon;
-            box-shadow: 0 0 0px 5px white;
-            color: white;
-            background-color: var(--main-logo-color);
-        }
+        font-size: $form-label-font;
+        color: white;
+        background-color: var(--main-logo-color);
+        box-shadow: 0 0 0px 4px white;
+        border-radius: 7px;
     }
 
     .form {
@@ -209,7 +201,7 @@
         $logo-height: 120px;
         $svg-height: 100px;
 
-        .svg-bkg {
+        .form-logo {
             justify-self: center;
 
             height: $logo-height;
