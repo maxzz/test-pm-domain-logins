@@ -84,6 +84,8 @@
 
                     const isPswMatched = this.passwords.p2 === this.passwords.p3 && this.passwords.p2.trim(); // not empty
                     if (!isPswMatched) {
+                        // console.log('1112');
+                        // (this as any).$toast("I'm a toast!");
                         alert('New password not confirmed');
                         return;
                     }
