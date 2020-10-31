@@ -1,9 +1,8 @@
 <template>
     <div class="login-view">
         <div class="overlay"></div>
-        <div class="page-title" :class="{
-            'login-a': formName === 'a',
-            'login-b': formName === 'b'}">
+
+        <div class="page-title" :class="{ 'login-a': formName === 'a', 'login-b': formName === 'b'}">
             <span>{{currentForm.disp}}</span>
         </div>
 
@@ -16,16 +15,16 @@
                 <div class="fields">
                     <input area-hidden="true" type="email" name="username" autocomplete="username" value="maxzz" style="display: none">
     
-                    <label for="pass">Current</label>
+                    <label for="pass">Current password</label>
                     <input id="cpass1" :type="passwordType" v-model="passwords.p1" placeholder="Current password" autocomplete="old-password">
     
-                    <label for="pass">New</label>
+                    <label for="pass">New password</label>
                     <input id="cpass2" :type="passwordType" v-model="passwords.p2" placeholder="New password" autocomplete="current-password">
     
-                    <label for="pass">Confirm</label>
+                    <label for="pass">Confirm new password</label>
                     <input id="cpass3" :type="passwordType" v-model="passwords.p3" placeholder="Confirm new password" autocomplete="confirm-password">
     
-                    <label class="reveal"><input type="checkbox" v-model="revealPasswords"> Reveal passwords</label>
+                    <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal passwords</label>
                     <button @click.prevent="onSubmit" class="g-btn">Change</button>
                 </div>
             </form>
@@ -43,7 +42,7 @@
                     <label for="pass">Password</label>
                     <input id="pass" :type="passwordType" v-model="thisPass" placeholder="Password" autocomplete="current-password">
     
-                    <label class="reveal"><input type="checkbox" v-model="revealPasswords"> Reveal password</label>
+                    <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal password</label>
                     <button @click.prevent="onSubmit" class="g-btn">Login</button>
                 </div>
             </form>
@@ -169,8 +168,8 @@
         }
     }
 
-    .form {
-        padding: 2em;
+        .form {
+        padding: 1.4em;
         margin: 0 auto;
         max-width: 22em;
 
@@ -183,19 +182,38 @@
         border-radius: 3px;
         box-shadow: 2px 2px 2px 0px rgba(0,0,0,.3);
 
+        $logo-height: 100px;
+
         .svg-bkg {
-            display: inline-block;
-            padding: 0 .6em;
-            border: .6em solid white;
-            background-color: moccasin;
-            //background-color: lighten(darkolivegreen, 20%);
-            //background-color: var(--main-color);
+            //margin-top: -$logo-height;
+            justify-self: center;
+
+            // width: $logo-height;
+            // height: $logo-height;
+            height: 170px;
+
+            display: grid;
+            place-items: center;
+
+            //background-color: red;
+
+            //display: inline-block;
+            //padding: 0 .6em;
+            //border: .6em solid white;
+            //background-color: moccasin;
             
-            box-shadow: 2px 2px 2px 0px inset rgba(0,0,0,.7);
+            //box-shadow: 2px 2px 2px 0px inset rgba(0,0,0,.7);
         }
 
         svg {
-            width: 70px;
+            width: $logo-height;
+            height: $logo-height;
+
+            // width: 64px;
+            // height: 64px;
+
+            // width: 100%;
+            // height: 100%;
             //grid-column: 1 / -1;
             //margin-left: -.4em;
 
