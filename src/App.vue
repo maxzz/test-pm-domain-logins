@@ -67,6 +67,7 @@ export default defineComponent({
         
         color: #2c3e50;
         background-color: #fffaf6;
+        //letter-spacing: .5px;
 
         width: 100%;
         height: 100vh;
@@ -121,8 +122,11 @@ export default defineComponent({
             margin-left: .2em;
             font-weight: bold;
             text-decoration: none;
-            //letter-spacing: .5px;
             color: #5c6064;
+
+            &:hover {
+                color: black;
+            }
 
             &.router-link-exact-active {
                 color: #42b983;
@@ -152,5 +156,29 @@ export default defineComponent({
         transform: scaleY(0.99);
     }
 
+    // global classes
+
+    $g-btn-bkg: #efefef;
+
+    .g-btn {
+        padding: .4em 1em;
+
+        font: inherit;
+        font-weight: 400;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        border-radius: 3px;
+        border: 1px solid #eee;
+
+        background-color: $g-btn-bkg;
+        border: 1px solid #ccc;
+        outline: none;
+
+        &:hover {
+            background-color: darken($g-btn-bkg, 5%);
+            box-shadow: 1px 1px 1px hsla(0, 0%, 0%, 0.2);
+        }
+    }
 
 </style>

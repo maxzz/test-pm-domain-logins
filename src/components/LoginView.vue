@@ -26,7 +26,7 @@
                     <input id="cpass3" :type="passwordType" v-model="passwords.p3" placeholder="Confirm new password" autocomplete="confirm-password">
     
                     <label class="reveal"><input type="checkbox" v-model="revealPasswords"> Reveal passwords</label>
-                    <button @click.prevent="onSubmit">Change</button>
+                    <button @click.prevent="onSubmit" class="g-btn">Change</button>
                 </div>
             </form>
         </div>
@@ -44,7 +44,7 @@
                     <input id="pass" :type="passwordType" v-model="thisPass" placeholder="Password" autocomplete="current-password">
     
                     <label class="reveal"><input type="checkbox" v-model="revealPasswords"> Reveal password</label>
-                    <button @click.prevent="onSubmit">Login</button>
+                    <button @click.prevent="onSubmit" class="g-btn">Login</button>
                 </div>
             </form>
         </div>
@@ -162,10 +162,10 @@
             font-size: 3em;
             padding: .2em .5em;
 
-            border: 2px solid gray;
+            color: white;
             background-color: red;
             border-radius: 7px;
-            border: 1px solid maroon;
+            border: 1px dotted maroon;
         }
     }
 
@@ -225,20 +225,18 @@
             padding: .4em;
             min-width: 10em;
             border-radius: 3px;
-            border: 1px solid #eee;
-            font-size: inherit;
+            border: 1px solid #aaa;
+            font: inherit;
 
             &:focus {
                 outline: 1px solid red;
             }
         }
 
-        $btn: #efefef;
-
         .reveal {
             user-select: none;
             white-space: nowrap;
-            color: #bbb;
+            color: var(--form-text-color);
             
             input:focus {
                 outline: none;
@@ -247,41 +245,27 @@
 
         button {
             justify-self: right;
-
-            font-size: .9em;
-            text-decoration: none;
-            text-transform: uppercase;
-            padding: .4em 1em;
-
-            border-radius: 3px;
-            border: 1px solid #eee;
-
-            background-color: $btn;
-            outline: none;
-
-            &:hover {
-                background-color: darken($btn, 10%);
-                outline: none;
-                box-shadow: 1px 1px teal;
-            }
         }
     }
 
     .login-a {
         --main-color: rebeccapurple;
         --main-bkg-color: #f7f7f7;
+
+        --form-text-color: #777;
         
         background-color: var(--main-bkg-color);
         border: 1px solid #eee;
-        color: #eee;
+        color: var(--form-text-color);
         //border: 1px solid #eee;
     }
 
     .login-b {
         --main-color: darkolivegreen;
+        --form-text-color: #ddd;
 
         background-color: darkolivegreen;
-        color: #eee;
+        color: var(--form-text-color);
         //border: 1px solid red;
     }
 </style>

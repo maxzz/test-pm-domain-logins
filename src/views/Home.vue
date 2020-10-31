@@ -17,7 +17,7 @@
                 <input class="inp" type="text" v-model="login.pass" />
             </div>
 
-            <button class="btn-logout" @click="onLogout(idx)" :dissabled="!login.logged">{{login.logged ? 'Log out' : 'Log in'}}</button>
+            <button class="g-btn btn-logout" @click="onLogout(idx)" :dissabled="!login.logged">{{login.logged ? 'Log out' : 'Log in'}}</button>
         </div>
     </div>
 </template>
@@ -111,7 +111,6 @@
 
         .btn-logout {
             margin-top: 1.2em;
-            padding: .4em;
         }
     }
 </style>
