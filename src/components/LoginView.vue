@@ -171,7 +171,7 @@
         .form {
         padding: 1.4em;
         margin: 0 auto;
-        max-width: 22em;
+        max-width: 20em;
 
         position: relative;
         z-index: 2;
@@ -180,34 +180,29 @@
         row-gap: 1em;
 
         border-radius: 3px;
-        box-shadow: 2px 2px 2px 0px rgba(0,0,0,.3);
+        box-shadow: 2px 2px 2px 0px rgba(0,0,0,.2);
 
-        $logo-height: 100px;
+        $logo-height: 120px;
+        $svg-height: 100px;
 
         .svg-bkg {
-            //margin-top: -$logo-height;
             justify-self: center;
 
-            // width: $logo-height;
-            // height: $logo-height;
-            height: 170px;
+            height: $logo-height;
 
             display: grid;
             place-items: center;
 
             //background-color: red;
-
-            //display: inline-block;
-            //padding: 0 .6em;
-            //border: .6em solid white;
-            //background-color: moccasin;
-            
-            //box-shadow: 2px 2px 2px 0px inset rgba(0,0,0,.7);
         }
 
         svg {
-            width: $logo-height;
-            height: $logo-height;
+            width: $svg-height;
+            height: $svg-height;
+
+            border: 10px solid #f7f7f7;
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px #c0c0c0d1;
 
             // width: 64px;
             // height: 64px;
