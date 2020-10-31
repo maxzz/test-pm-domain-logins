@@ -59,6 +59,7 @@
     import SvgLogin from "@/components/SvgLogin.vue";
     import SvgChange from "@/components/SvgChange.vue";
 
+    const toastedError = { position: POSITION.BOTTOM_RIGHT, type: TYPE.ERROR };
 
     export default defineComponent({
         props: {
@@ -79,13 +80,13 @@
 
                     const isUserCorrect = this.passwords.p1 === this.thisPass;
                     if (!isUserCorrect) {
-                        this.toast('Current password is incorrect');
+                        this.toast('Current password is incorrect', toastedError);
                         return;
                     }
 
                     const isPswMatched = this.passwords.p2 === this.passwords.p3 && this.passwords.p2.trim(); // not empty
                     if (!isPswMatched) {
-                        this.toast('New password not confirmed', { position: POSITION.BOTTOM_RIGHT, type: TYPE.ERROR });
+                        this.toast('New password not confirmed', toastedError);
                         return;
                     }
 

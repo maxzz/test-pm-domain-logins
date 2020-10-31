@@ -1,5 +1,7 @@
 # test-domain-logins
 
+Application for testing several login and password change forms in one domain.
+
 ## Project setup
 ```
 yarn install
