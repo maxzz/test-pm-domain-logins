@@ -1,9 +1,9 @@
 <template>
-    <div class="login-view">
+    <div class="login-view" :class="formClass()">
         <div class="overlay"></div>
 
         <div v-if="isClogin">
-            <form class="form" :class="formClass()">
+            <form class="form">
                 <div class="form-name">{{currentForm.disp}}</div>
 
                 <div class="form-logo">
@@ -28,7 +28,7 @@
             </form>
         </div>
         <div v-else>
-            <form class="form" :class="formClass()">
+            <form class="form">
                 <div class="form-name">{{currentForm.disp}}</div>
 
                 <div class="form-logo">
@@ -99,7 +99,7 @@
         setup(props) {
             const store = useStore<IStore>();
             const currentForm = computed(() => store.state.logins[props.formName]);
-            const formClass = () => props.formName === 'a' ? 'login-a' : 'login-b';
+            const formClass = () => props.formName === 'a' ? 'website-a' : 'website-b';
 
             const thisUser = ref(currentForm.value.user);
             const thisPass = ref(currentForm.value.pass);
@@ -145,11 +145,11 @@
         //--form-lowtext-color: $lowtext-color; // SASS does not like SASS functions inside CSS custom properties.
     }
 
-    .login-a {
+    .website-a {
         --main-logo-color: rebeccapurple;
     }
 
-    .login-b {
+    .website-b {
         --main-logo-color: darkolivegreen;
     }
 
