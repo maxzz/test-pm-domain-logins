@@ -2,14 +2,17 @@
     <div class="login-view">
         <div class="overlay"></div>
 
-        <div class="page-title" :class="{ 'login-a': formName === 'a', 'login-b': formName === 'b'}">
+        <!-- <div class="page-title" :class="{ 'login-a': formName === 'a', 'login-b': formName === 'b'}">
             <span>{{currentForm.disp}}</span>
-        </div>
+        </div> -->
 
         <div v-if="isClogin">
             <form class="form" :class="formClass()">
                 <div class="svg-bkg">
                     <SvgChange />
+                    <div class="page-title" :class="{ 'login-a': formName === 'a', 'login-b': formName === 'b'}">
+                        <span>{{currentForm.disp}}</span>
+                    </div>
                 </div>
 
                 <div class="fields">
@@ -33,6 +36,9 @@
             <form class="form" :class="formClass()">
                 <div class="svg-bkg">
                     <SvgLogin />
+                    <div class="page-title" :class="{ 'login-a': formName === 'a', 'login-b': formName === 'b'}">
+                        <span>{{currentForm.disp}}</span>
+                    </div>
                 </div>
 
                 <div class="fields">
@@ -132,10 +138,25 @@
 </script>
 
 <style lang="scss" scoped>
+
+    $form-lowtext-color: darken(#f00, 30%);
+
     .login-view {
-        //<div style="background-color: red"></div>
         position: relative;
         height: 100%;
+        padding-top: 4em;
+
+        --main-bkg-color: #c3c3c3;
+        --form-text-color: black;
+        //--form-lowtext-color: $lowtext-color; // SASS does not like SASS functions inside CSS custom properties.
+    }
+
+    .login-a {
+        --main-logo-color: rebeccapurple;
+    }
+
+    .login-b {
+        --main-logo-color: darkolivegreen;
     }
 
     .overlay {
@@ -148,27 +169,29 @@
         z-index: 1;
     }
 
-    .page-title {
-        text-align: left;
-        height: 7em;
-        margin-bottom: 2em;
-        background-color: var(--main-color);
+    $form-label-height: 3em;
 
-        position: relative;
-        z-index: 2;
+    .page-title {
+        position: absolute;
+        top: -$form-label-height / 2;
+        right: 1.8em;
+        
+        display: grid;
+        place-items: center;
 
         span {
-            font-size: 3em;
+            font-size: $form-label-height;
             padding: .2em .5em;
 
-            color: white;
-            background-color: red;
             border-radius: 7px;
             border: 1px dotted maroon;
+            box-shadow: 0 0 0px 5px white;
+            color: white;
+            background-color: var(--main-logo-color);
         }
     }
 
-        .form {
+    .form {
         padding: 1.4em;
         margin: 0 auto;
         max-width: 20em;
@@ -179,6 +202,7 @@
         display: grid;
         row-gap: 1em;
 
+        background-color: var(--main-bkg-color);
         border-radius: 3px;
         box-shadow: 2px 2px 2px 0px rgba(0,0,0,.2);
 
@@ -192,8 +216,6 @@
 
             display: grid;
             place-items: center;
-
-            //background-color: red;
         }
 
         svg {
@@ -203,14 +225,6 @@
             border: 10px solid #f7f7f7;
             border-radius: 50%;
             box-shadow: 0px 0px 10px #c0c0c0d1;
-
-            // width: 64px;
-            // height: 64px;
-
-            // width: 100%;
-            // height: 100%;
-            //grid-column: 1 / -1;
-            //margin-left: -.4em;
 
             .a {
                 fill: none;
@@ -232,6 +246,7 @@
         align-items: center;
 
         font-size: .9rem;
+        color: var(--form-text-color);
 
         input[type=text],
         input[type=password] {
@@ -249,7 +264,7 @@
         .reveal {
             user-select: none;
             white-space: nowrap;
-            color: var(--form-text-color);
+            color: $form-lowtext-color;
             
             input:focus {
                 outline: none;
@@ -259,26 +274,5 @@
         button {
             justify-self: right;
         }
-    }
-
-    .login-a {
-        --main-color: rebeccapurple;
-        --main-bkg-color: #f7f7f7;
-
-        --form-text-color: #777;
-        
-        background-color: var(--main-bkg-color);
-        border: 1px solid #eee;
-        color: var(--form-text-color);
-        //border: 1px solid #eee;
-    }
-
-    .login-b {
-        --main-color: darkolivegreen;
-        --form-text-color: #ddd;
-
-        background-color: darkolivegreen;
-        color: var(--form-text-color);
-        //border: 1px solid red;
     }
 </style>
