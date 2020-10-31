@@ -54,6 +54,7 @@
 <script lang="ts">
     import { computed, defineComponent, reactive, ref } from 'vue';
     import { mapState, useStore } from 'vuex';
+    import { POSITION, TYPE, useToast } from 'vue-toastification';
     import { PayloadLoggedIn, PayloadLoginCredentials, IStore } from '@/store';
     import SvgLogin from "@/components/SvgLogin.vue";
     import SvgChange from "@/components/SvgChange.vue";
@@ -78,15 +79,13 @@
 
                     const isUserCorrect = this.passwords.p1 === this.thisPass;
                     if (!isUserCorrect) {
-                        alert('Current password is incorrect');
+                        this.toast('Current password is incorrect');
                         return;
                     }
 
                     const isPswMatched = this.passwords.p2 === this.passwords.p3 && this.passwords.p2.trim(); // not empty
                     if (!isPswMatched) {
-                        // console.log('1112');
-                        // (this as any).$toast("I'm a toast!");
-                        alert('New password not confirmed');
+                        this.toast('New password not confirmed', { position: POSITION.BOTTOM_RIGHT, type: TYPE.ERROR });
                         return;
                     }
 
@@ -118,6 +117,8 @@
             const setLogged = (form: string, val: boolean) => store.dispatch('loggedIn', {form: form, val} as PayloadLoggedIn);
             const setLoginCredentials = (form: string, user: string, pass: string) => store.dispatch('loginCredentials', {form, user, pass} as PayloadLoginCredentials);
 
+            const toast = useToast();
+
             return {
                 currentForm,
                 formClass,
@@ -128,6 +129,7 @@
                 passwordType,
                 setLogged,
                 setLoginCredentials,
+                toast,
             };
         }
     });
