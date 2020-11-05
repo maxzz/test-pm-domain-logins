@@ -14,13 +14,19 @@
                     <input area-hidden="true" type="email" name="username" autocomplete="username" value="maxzz" style="display: none">
     
                     <label for="pass">Current password</label>
-                    <input id="cpass1" :type="passwordType" v-model="passwords.p1" placeholder="Current password" autocomplete="old-password">
+                    <div>
+                        <input id="cpass1" :type="passwordType" v-model="passwords.p1" placeholder="Current password" autocomplete="old-password">
+                    </div>
     
                     <label for="pass">New password</label>
-                    <input id="cpass2" :type="passwordType" v-model="passwords.p2" placeholder="New password" autocomplete="current-password">
+                    <div>
+                        <input id="cpass2" :type="passwordType" v-model="passwords.p2" placeholder="New password" autocomplete="current-password">
+                    </div>
     
                     <label for="pass">Confirm new password</label>
-                    <input id="cpass3" :type="passwordType" v-model="passwords.p3" placeholder="Confirm new password" autocomplete="confirm-password">
+                    <div>
+                        <input id="cpass3" :type="passwordType" v-model="passwords.p3" placeholder="Confirm new password" autocomplete="confirm-password">
+                    </div>
     
                     <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal passwords</label>
                     <button @click.prevent="onSubmit" class="g-btn">Change</button>
@@ -37,10 +43,15 @@
 
                 <div class="fields">
                     <label for="user">Username</label>
-                    <input id="user" type="text" v-model="thisUser" placeholder="Username" autocomplete="username">
+                    <div>
+                        <input id="user" type="text" v-model="thisUser" placeholder="Username" autocomplete="username">
+                    </div>
     
                     <label for="pass">Password</label>
-                    <input id="pass" :type="passwordType" v-model="thisPass" placeholder="Password" autocomplete="current-password">
+
+                    <div>
+                        <input id="pass" :type="passwordType" v-model="thisPass" placeholder="Password" autocomplete="current-password">
+                    </div>
     
                     <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal password</label>
                     <button @click.prevent="onSubmit" class="g-btn">Login</button>
@@ -248,6 +259,7 @@
         input[type=password] {
             padding: .4em;
             min-width: 10em;
+            width: 100%;
             border-radius: 3px;
             border: 1px solid #aaa;
             font: inherit;
