@@ -1,6 +1,6 @@
 <template>
     <div class="nav">
-        <div class="nav-logo">
+        <div class="nav-logo" @click="reloadPage" title="Reload page">
             Dm
         </div>
         <router-link to="/">Home</router-link>
@@ -38,6 +38,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { RouteLocation, RouteRecordNormalized } from 'vue-router';
 import { mapState } from 'vuex';
 //require('./assets/fonts/YanoneKaffeesatz-Regular.ttf');
 
@@ -49,6 +50,11 @@ export default defineComponent({
     // },
     computed: {
         ...mapState(['logins'])
+    },
+    methods: {
+        reloadPage: function() {
+            window.open(process.env.BASE_URL, '_self');
+        }
     }
 });
 </script>
@@ -93,15 +99,29 @@ export default defineComponent({
         font-weight: 300;
         font-size: 1.3em;
 
+        $logo-bkg: rgb(250, 220, 220);
+
         .nav-logo {
-            display: grid;
-            place-items: center;
-            background-color: rgb(250, 220, 220);
-            border: 1px dotted red;
-            border-radius: 3px;
-            font-weight: bold;
+            flex-shrink: 0;
             width: 2em;
             height: 2em;
+            font-weight: bold;
+
+            background-color: $logo-bkg;
+            border: 1px dotted red;
+            border-radius: 3px;
+
+            transition: background-color .6s ease, color 1s ease-in-out;
+            cursor: pointer;
+            user-select: none;
+
+            display: grid;
+            place-items: center;
+
+            &:hover {
+                background-color: darken($logo-bkg, 5%);
+                color: red; //lighten($logo-bkg, 5%);
+            }
         }
 
         .nav-links {
