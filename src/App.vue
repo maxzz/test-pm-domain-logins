@@ -159,9 +159,10 @@ export default defineComponent({
 
     .top-container {
         height: 100%;
-        background-image: url("./assets/rain.svg");
-        background-repeat: no-repeat;
-        background-size: cover;
+        background: center / contain repeat url("./assets/rain.svg"), linear-gradient(to bottom, #131e27, #3082d3);
+        //background-image: url("./assets/rain.svg");
+        //background-repeat: no-repeat;
+        //background-size: cover;
     }
 
     .route-enter-from    // , .route-leave-to
