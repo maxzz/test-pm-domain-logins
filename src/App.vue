@@ -111,7 +111,7 @@ export default defineComponent({
             border: 1px dotted red;
             border-radius: 3px;
 
-            transition: background-color .6s ease, color 1s ease-in-out;
+            transition: background-color .6s ease-in-out, color .6s ease;
             cursor: pointer;
             user-select: none;
 
@@ -119,7 +119,9 @@ export default defineComponent({
             place-items: center;
 
             &:hover {
-                background-color: darken($logo-bkg, 5%);
+                background: radial-gradient($logo-bkg, darken($logo-bkg, 30%));
+                border: 2px solid #fe7f7f;
+                border-radius: 6px;
                 color: red; //lighten($logo-bkg, 5%);
             }
         }
