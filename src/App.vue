@@ -72,7 +72,8 @@ export default defineComponent({
         -moz-osx-font-smoothing: grayscale;
         
         color: #2c3e50;
-        background-color: #fffaf6;
+        //background-color: #fffaf6;
+        background-color: #091e30;
         //letter-spacing: .5px;
 
         width: 100%;
@@ -88,12 +89,17 @@ export default defineComponent({
     }
 
     .nav {
+        height: 4rem;
+
         display: flex;
         align-items: center;
         margin: 0 auto;
         padding: 0 1em;
-        background-color: #f7f7f7;
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+        
+        background-color: #091e30;
+        //background-color: red;
+        //box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+        box-shadow: inset 0px 0px 12px 11px #020b13;
         
         font-family: "Yanone", sans-serif;
         font-weight: 300;
@@ -144,10 +150,10 @@ export default defineComponent({
             margin-left: .2em;
             font-weight: bold;
             text-decoration: none;
-            color: #5c6064;
+            color: #82868a;
 
             &:hover {
-                color: black;
+                color: #ececec;
             }
 
             &.router-link-exact-active {
