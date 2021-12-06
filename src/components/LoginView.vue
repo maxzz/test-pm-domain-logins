@@ -29,7 +29,7 @@
                     </div>
     
                     <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal passwords</label>
-                    <button @click.prevent="onSubmit" class="g-btn">Change</button>
+                    <button @click.prevent="onSubmit($event, formClass(), isClogin)" class="g-btn">Change</button>
                 </div>
             </form>
         </div>
@@ -54,7 +54,7 @@
                     </div>
     
                     <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal password</label>
-                    <button @click.prevent="onSubmit" class="g-btn">Login</button>
+                    <button @click.prevent="onSubmit($event, formClass(), isClogin)" class="g-btn">Login</button>
                 </div>
             </form>
         </div>
@@ -85,7 +85,7 @@
         },
         components: { SvgLogin, SvgChange},
         methods: {
-            onSubmit(e: MouseEvent) {
+            onSubmit(e: MouseEvent, currentFormClass: string, isClogin: boolean) {
                 if (this.isClogin) {
                     // TODO: check if logged in; check is new password is different from the current password.
 
@@ -106,7 +106,7 @@
                     this.setLoginCredentials(this.formName, this.thisUser, this.thisPass);
                     this.setLogged(this.formName, true);
                 }
-                this.$router.push({name: 'Home'});
+                this.$router.push({name: 'Home', query: {from: currentFormClass, form: isClogin ? 'passwordchange' : 'login'}});
             }
         },
         setup(props) {
