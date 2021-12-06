@@ -53,7 +53,7 @@ export default defineComponent({
     },
     methods: {
         reloadPage: function() {
-            window.open(process.env.BASE_URL, '_self');
+            window.open(import.meta.env.BASE_URL, '_self');
         }
     }
 });

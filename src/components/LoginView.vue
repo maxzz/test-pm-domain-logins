@@ -66,9 +66,9 @@
     import { computed, defineComponent, reactive, ref } from 'vue';
     import { mapState, useStore } from 'vuex';
     import { POSITION, TYPE, useToast } from 'vue-toastification';
-    import { PayloadLoggedIn, PayloadLoginCredentials, IStore } from '@/store';
-    import SvgLogin from "@/components/SvgLogin.vue";
-    import SvgChange from "@/components/SvgChange.vue";
+    import { PayloadLoggedIn, PayloadLoginCredentials, IStore } from '../store';
+    import SvgLogin from "../components/SvgLogin.vue";
+    import SvgChange from "../components/SvgChange.vue";
 
     const toastedError = { position: POSITION.BOTTOM_RIGHT, type: TYPE.ERROR };
 

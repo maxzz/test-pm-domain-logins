@@ -88,5 +88,5 @@ export default createStore<IStore>({
     },
     modules: {
     },
-    plugins: process.env.NODE_ENV === 'production' ? [localStoragePlugin] : [localStoragePlugin, createLogger()]
+    plugins: import.meta.env.PROD ? [localStoragePlugin] : [localStoragePlugin, createLogger()]
 });

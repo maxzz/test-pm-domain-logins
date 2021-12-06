@@ -6,7 +6,7 @@
 
 <script lang="ts">
     import { defineComponent } from "vue";
-    import LoginView from "@/components/LoginView.vue";
+    import LoginView from "../components/LoginView.vue";
 
     export default defineComponent({
         components: { LoginView },

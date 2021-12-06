@@ -2,8 +2,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 import LoginPageA from "../views/LoginPageA.vue";
 import LoginPageB from "../views/LoginPageB.vue";
-import PagePasswordChangeA from "@/views/PagePasswordChangeA.vue";
-import PagePasswordChangeB from "@/views/PagePasswordChangeB.vue";
+import PagePasswordChangeA from "../views/PagePasswordChangeA.vue";
+import PagePasswordChangeB from "../views/PagePasswordChangeB.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -48,7 +48,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
+    history: createWebHistory(import.meta.env.BASE_URL),
     routes
 });
 
