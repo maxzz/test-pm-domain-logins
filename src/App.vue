@@ -197,12 +197,14 @@ export default defineComponent({
     }
 
     .route-leave-active {
+        transform: scaleX(.97);
         transition: all .2s ease;
         opacity: 0;
     }
 
     .route-leave-to    // , .route-leave-from
      {
+         transform: scaleX(0);
         //transform: scaleX(1);
         opacity: 0;
         
