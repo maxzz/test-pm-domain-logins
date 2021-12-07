@@ -7,10 +7,10 @@
 
         <div class="nav-links">
             <!-- <router-link to="/">Home</router-link> -->
-            <router-link :to="{name: 'LoginA'}">Login {{logins.a.disp}}</router-link>
-            <router-link :to="{name: 'LoginB'}">Login {{logins.b.disp}}</router-link>
-            <router-link :to="{name: 'ChangeA'}">Change {{logins.a.disp}}</router-link>
-            <router-link :to="{name: 'ChangeB'}">Change {{logins.b.disp}}</router-link>
+            <router-link :to="{name: 'LoginA', query: { from: 'homeToLoginA' }}">Login {{logins.a.disp}}</router-link>
+            <router-link :to="{name: 'LoginB', query: { from: 'homeToLoginB' }}">Login {{logins.b.disp}}</router-link>
+            <router-link :to="{name: 'ChangeA', query: { from: 'homeToChangeA' }}">Change {{logins.a.disp}}</router-link>
+            <router-link :to="{name: 'ChangeB', query: { from: 'homeToChangeB' }}">Change {{logins.b.disp}}</router-link>
             <!-- <router-link to="/about">About</router-link> -->
         </div>
     </div>
