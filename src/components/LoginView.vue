@@ -148,6 +148,7 @@
 </script>
 
 <style lang="scss" scoped>
+    @use "sass:math";
 
     $form-lowtext-color: darken(#f00, 30%);
 
@@ -200,7 +201,7 @@
         $form-label-height: 56px;
 
         position: absolute;
-        top: -($form-label-height / 2);
+        top: - math.div($form-label-height, 2);
         right: .6em;
         width: $form-label-height;
         height: $form-label-height;
