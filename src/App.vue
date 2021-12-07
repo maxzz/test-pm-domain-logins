@@ -175,6 +175,7 @@ export default defineComponent({
      {
         //transform: scaleX(.97);
         //opacity: 0;
+        background-color: red;
     }
 
     .route-enter-active {
@@ -185,6 +186,26 @@ export default defineComponent({
      {
         //transform: scaleX(1);
         //opacity: 0;
+        background-color: blue;
+    }
+
+    .route-leave-from    // , .route-leave-to
+     {
+        //transform: scaleX(.97);
+        //opacity: 0;
+        
+    }
+
+    .route-leave-active {
+        transition: all .2s ease;
+        opacity: 0;
+    }
+
+    .route-leave-to    // , .route-leave-from
+     {
+        //transform: scaleX(1);
+        opacity: 0;
+        
     }
 
     // global classes
