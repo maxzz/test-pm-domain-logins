@@ -49,9 +49,10 @@
 
 <style lang="scss" scoped>
     .page-home {
-        padding: 1em;
+        padding: 4em;
 
         display: grid;
+        place-items: center;
         gap: 1em;
         //align-content: start;
         //height: 100%;
@@ -61,6 +62,7 @@
 
     .website {
         padding: 2em .4em .4em;
+        //max-width: 400px;
 
         border-radius: 3px;
 
