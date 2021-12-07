@@ -17,10 +17,10 @@
 
     <!-- <router-view id="router-view" /> -->
 
-    <router-view v-slot="{ Component, route }">
-        <!-- {{print(Component)}} -->
-        <transition :name="route.meta && route.meta.transition">
-            <component :is="Component" />
+    <router-view v-slot="{Component, route}">
+        {{print(Component, route)}}
+        <transition :name="route.meta && route.meta.transition" mode="out-in">
+            <component :is="Component" :key="route.path" />
         </transition>
     </router-view>
 
@@ -43,18 +43,24 @@ import { mapState } from 'vuex';
 //require('./assets/fonts/YanoneKaffeesatz-Regular.ttf');
 
 export default defineComponent({
-    // methods: {
-    //     print(component: any) {
-    //         console.log(component ? { file: component.type.__file, props: component.type.__props, type: component.type, comp: component } : 'undefined component');
-    //     }
-    // },
     computed: {
         ...mapState(['logins'])
     },
     methods: {
         reloadPage: function() {
             window.open(import.meta.env.BASE_URL, '_self');
-        }
+        },
+        print(component: any, route: any) {
+            console.log(component 
+                ? {
+                    file: component.type.__file,
+                    props: component.type.__props,
+                    type: component.type, comp: component
+                  } 
+                : 'undefined component',
+            );
+            console.log(route);
+        },
     }
 });
 </script>
@@ -171,6 +177,33 @@ export default defineComponent({
         //background-size: cover;
     }
 
+    // global classes
+
+    $g-btn-bkg: #efefef;
+
+    .g-btn {
+        padding: .4em 1em;
+
+        font: inherit;
+        font-weight: 400;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        border-radius: 3px;
+        border: 1px solid #eee;
+
+        background-color: $g-btn-bkg;
+        border: 1px solid #ccc;
+        outline: none;
+
+        &:hover {
+            background-color: darken($g-btn-bkg, 5%);
+            box-shadow: 1px 1px 1px hsla(0, 0%, 0%, 0.2);
+        }
+    }
+
+    // transitions
+
     .route-enter-from    // , .route-leave-to
     {
         //transform: scaleX(.97);
@@ -207,30 +240,5 @@ export default defineComponent({
     //     //transform: scaleX(1);
     //     //opacity: 0;
     // }
-
-    // global classes
-
-    $g-btn-bkg: #efefef;
-
-    .g-btn {
-        padding: .4em 1em;
-
-        font: inherit;
-        font-weight: 400;
-        text-decoration: none;
-        text-transform: uppercase;
-
-        border-radius: 3px;
-        border: 1px solid #eee;
-
-        background-color: $g-btn-bkg;
-        border: 1px solid #ccc;
-        outline: none;
-
-        &:hover {
-            background-color: darken($g-btn-bkg, 5%);
-            box-shadow: 1px 1px 1px hsla(0, 0%, 0%, 0.2);
-        }
-    }
 
 </style>
