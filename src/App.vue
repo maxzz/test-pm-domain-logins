@@ -173,7 +173,8 @@ export default defineComponent({
 
     .route-enter-from    // , .route-leave-to
      {
-        transform: scaleY(0.99);
+        //transform: scaleX(.97);
+        //opacity: 0;
     }
 
     .route-enter-active {
@@ -182,7 +183,8 @@ export default defineComponent({
 
     .route-enter-to    // , .route-leave-from
      {
-        transform: scaleY(0.99);
+        //transform: scaleX(1);
+        //opacity: 0;
     }
 
     // global classes
