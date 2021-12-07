@@ -175,11 +175,11 @@ export default defineComponent({
      {
         //transform: scaleX(.97);
         //opacity: 0;
-        background-color: red;
+        //background-color: red;
     }
 
     .route-enter-active {
-        transition: all .2s ease;
+        //transition: all .2s ease;
     }
 
     .route-enter-to    // , .route-leave-from
