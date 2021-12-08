@@ -41,6 +41,7 @@ import { defineComponent } from 'vue';
 import { RouteLocation, RouteRecordNormalized } from 'vue-router';
 import { mapState } from 'vuex';
 //require('./assets/fonts/YanoneKaffeesatz-Regular.ttf');
+import "./App.scss";
 
 export default defineComponent({
     computed: {
@@ -201,44 +202,5 @@ export default defineComponent({
             box-shadow: 1px 1px 1px hsla(0, 0%, 0%, 0.2);
         }
     }
-
-    // transitions
-
-    .route-enter-from    // , .route-leave-to
-    {
-        //transform: scaleX(.97);
-        opacity: 0;
-        //background-color: red;
-    }
-
-    .route-enter-active {
-        //transition: all .2s ease;
-    }
-
-    .route-enter-to    // , .route-leave-from
-    {
-        //transform: scaleX(1);
-        //opacity: 0;
-        //background-color: blue;
-    }
-
-    // .route-leave-from    // , .route-leave-to
-    // {
-    //     //transform: scaleX(.97);
-    //     //opacity: 0;
-    // }
-
-    // .route-leave-active {
-    //     //transform: scaleX(.97);
-    //     transition: all .2s ease;
-    //     //opacity: 0;
-    // }
-
-    // .route-leave-to    // , .route-leave-from
-    //  {
-    //     //transform: scaleX(0);
-    //     //transform: scaleX(1);
-    //     //opacity: 0;
-    // }
 
 </style>
