@@ -49,23 +49,6 @@
 
 <style lang="scss" scoped>
 
-    // transitions
-
-    .home-up-enter-from {
-        transform: scale(0);
-    }
-
-    .home-up-enter-active {
-        transform: all 4s easy;
-        transform: scale(0) rotateY(-30deg);
-    }
-
-    .home-up-enter-to {
-        transform: scale(0);
-    }
-
-    // the rest
-
     .page-home {
         padding: 4em;
 

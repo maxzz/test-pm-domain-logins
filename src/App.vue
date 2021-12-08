@@ -15,55 +15,53 @@
         </div>
     </div>
 
-    <!-- <router-view id="router-view" /> -->
-
     <router-view v-slot="{Component, route}">
-        {{print(Component, route)}}
-        <transition :name="route.meta && route.meta.transition" mode="out-in">
-            <component :is="Component" :key="route.path" />
-        </transition>
+        <!-- <div class="debug-transition-wrapper"> -->
+            <transition :name="route.meta && route.meta.transition" mode="out-in">
+                <component :is="Component" :key="route.path" />
+            </transition>
+            {{print(Component, route)}}
+        <!-- </div> -->
     </router-view>
-
-    <!-- <router-view v-slot="{ Component }">
-        {{print(Component)}}
-        <transition
-            enter-active-class="animated bounce"
-            leave-active-class="animated pulse"
-        >
-            <component :is="Component" />
-        </transition>
-    </router-view> -->
-
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { RouteLocation, RouteRecordNormalized } from 'vue-router';
-import { mapState } from 'vuex';
-//require('./assets/fonts/YanoneKaffeesatz-Regular.ttf');
-import "./App.scss";
+<!--
+<router-view v-slot="{ Component }">
+    {{print(Component)}}
+    <transition enter-active-class="animated bounce" leave-active-class="animated pulse">
+        <component :is="Component" />
+    </transition>
+</router-view>
+-->
 
-export default defineComponent({
-    computed: {
-        ...mapState(['logins'])
-    },
-    methods: {
-        reloadPage: function() {
-            window.open(import.meta.env.BASE_URL, '_self');
+<script lang="ts">
+    import { defineComponent } from 'vue';
+    import { RouteLocation, RouteRecordNormalized } from 'vue-router';
+    import { mapState } from 'vuex';
+    //require('./assets/fonts/YanoneKaffeesatz-Regular.ttf');
+    import "./App.scss";
+
+    export default defineComponent({
+        computed: {
+            ...mapState(['logins'])
         },
-        print(component: any, route: any) {
-            console.log(component 
-                ? {
-                    file: component.type.__file,
-                    props: component.type.__props,
-                    type: component.type, comp: component
-                  } 
-                : 'undefined component',
-            );
-            console.log(route);
-        },
-    }
-});
+        methods: {
+            reloadPage: function() {
+                window.open(import.meta.env.BASE_URL, '_self');
+            },
+            print(component: any, route: any) {
+                console.log(component
+                    ? {
+                        file: component.type.__file,
+                        props: component.type.__props,
+                        type: component.type, comp: component
+                    }
+                    : 'undefined component',
+                );
+                console.log(route);
+            },
+        }
+    });
 </script>
 
 <style lang="scss">
@@ -77,10 +75,11 @@ export default defineComponent({
         font-family: "Yanone", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        
+
         color: #2c3e50;
         //background-color: #fffaf6;
         background-color: #091e30;
+        background-color: red;
         //letter-spacing: .5px;
 
         width: 100%;
@@ -102,12 +101,12 @@ export default defineComponent({
         align-items: center;
         margin: 0 auto;
         padding: 0 1em;
-        
+
         background-color: #091e30;
         //background-color: red;
         //box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
         box-shadow: inset 0px 0px 12px 11px #020b13;
-        
+
         font-family: "Yanone", sans-serif;
         font-weight: 300;
         font-size: 1.3em;
