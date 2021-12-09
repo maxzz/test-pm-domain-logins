@@ -2,32 +2,27 @@
     <div class="login-view" :class="formClass()">
         <div class="overlay"></div>
 
+        <transition name="transitionview">
         <div v-if="isClogin">
             <form class="form">
                 <div class="form-name">{{currentForm.disp}}</div>
-
                 <div class="form-logo">
                     <SvgChange />
                 </div>
-
                 <div class="fields">
                     <input area-hidden="true" type="email" name="username" autocomplete="username" value="maxzz" style="display: none">
-    
                     <label for="pass">Current password</label>
                     <div>
                         <input id="cpass1" :type="passwordType" v-model="passwords.p1" placeholder="Current password" autocomplete="old-password">
                     </div>
-    
                     <label for="pass">New password</label>
                     <div>
                         <input id="cpass2" :type="passwordType" v-model="passwords.p2" placeholder="New password" autocomplete="current-password">
                     </div>
-    
                     <label for="pass">Confirm new password</label>
                     <div>
                         <input id="cpass3" :type="passwordType" v-model="passwords.p3" placeholder="Confirm new password" autocomplete="confirm-password">
                     </div>
-    
                     <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal passwords</label>
                     <button @click.prevent="onSubmit($event, formClass(), isClogin)" class="g-btn">Change</button>
                 </div>
@@ -58,6 +53,7 @@
                 </div>
             </form>
         </div>
+        </transition>
 
     </div>
 </template>
@@ -149,6 +145,18 @@
 
 <style lang="scss" scoped>
     @use "sass:math";
+
+    .transitionview-enter-from {
+        transform: translateY(200px) scaleY(.5);
+    }    
+
+    .transitionview-enter-active {
+        transition: all 14s ease;
+    }    
+
+    .transitionview-enter-to {
+
+    }    
 
     $form-lowtext-color: darken(#f00, 30%);
 

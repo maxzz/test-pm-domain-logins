@@ -20,7 +20,7 @@
             <transition :name="route.meta && route.meta.transition" mode="out-in">
                 <component :is="Component" :key="route.path" />
             </transition>
-            {{print(Component, route)}}
+            <!-- {{print(Component, route)}} -->
         <!-- </div> -->
     </router-view>
 </template>
