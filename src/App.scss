@@ -46,7 +46,7 @@
 }
 
 .transithome-enter-active, .transithome-leave-active {
-    transition: all .4s ease;
+    transition: all 5.4s ease;
     background-color: green;
     //transform: scale(0) rotateY(-30deg);
 }
@@ -55,3 +55,10 @@
     //transform: scale(0);
     background-color: blue;
 }
+
+/*
+For debugging add live expressions:
+$('.page-home')
+$('.page-a.top-container')
+$('.page-b.top-container')
+*/
