@@ -79,7 +79,7 @@
         color: #2c3e50;
         //background-color: #fffaf6;
         background-color: #091e30;
-        background-color: red;
+        //background-color: red;
         //letter-spacing: .5px;
 
         width: 100%;
