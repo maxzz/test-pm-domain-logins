@@ -10,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
         path: "/",
         name: "Home",
         component: Home,
-        meta: {transition: 'route' },
+        meta: {transition: 'transithome' },
     },
     {
         path: "/apage",
