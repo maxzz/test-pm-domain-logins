@@ -16,25 +16,25 @@ const routes: Array<RouteRecordRaw> = [
         path: "/apage",
         name: "LoginA",
         component: LoginPageA,
-        meta: { transition: 'route' },
+        meta: { transition: 'route', mode: "out-in" },
     },
     {
         path: "/bpage",
         name: "LoginB",
         component: LoginPageB,
-        meta: { transition: 'route' },
+        meta: { transition: 'route', mode: "out-in" },
     },
     {
         path: "/apage/changeA",
         name: "ChangeA",
         component: PagePasswordChangeA,
-        meta: { transition: 'route' },
+        meta: { transition: 'route', mode: "out-in" },
     },
     {
         path: "/apage/changeB",
         name: "ChangeB",
         component: PagePasswordChangeB,
-        meta: { transition: 'route' },
+        meta: { transition: 'route', mode: "out-in" },
     },
 
     // {

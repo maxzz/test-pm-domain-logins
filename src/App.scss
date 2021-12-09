@@ -45,9 +45,15 @@
     transform: translateY(100vh);
 }
 
-.transithome-enter-active, .transithome-leave-active {
-    transition: all 5.4s ease;
-    background-color: green;
+.transithome-enter-active {
+    transition: all .4s ease;
+    //background-color: green;
+    //transform: scale(0) rotateY(-30deg);
+}
+
+.transithome-leave-active {
+    //transition: all .2s ease;
+    //background-color: green;
     //transform: scale(0) rotateY(-30deg);
 }
 

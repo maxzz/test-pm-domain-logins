@@ -17,7 +17,7 @@
 
     <router-view v-slot="{Component, route}">
         <!-- <div class="debug-transition-wrapper"> -->
-            <transition :name="route.meta && route.meta.transition" mode="out-in">
+            <transition :name="route.meta?.transition" :mode="route.meta?.mode">
                 <component :is="Component" :key="route.path" />
             </transition>
             <!-- {{print(Component, route)}} -->
