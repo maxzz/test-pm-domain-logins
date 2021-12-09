@@ -1,9 +1,9 @@
 <template>
     <div class="nav">
-        <div class="nav-logo" @click="reloadPage" title="Return home with reloading the page">
+        <div class="nav-logo" @click="reloadPage" title="Go back to Home by reloading the page">
             Dm
         </div>
-        <router-link to="/" title="Return home without reloading the page">Home</router-link>
+        <router-link to="/" title="Home">Home</router-link>
 
         <div class="nav-links">
             <!-- <router-link to="/">Home</router-link> -->
