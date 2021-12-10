@@ -13,6 +13,8 @@
             <router-link :to="{name: 'ChangeB', query: { from: 'homeToChangeB' }}">Change {{logins.b.disp}}</router-link>
             <!-- <router-link to="/about">About</router-link> -->
         </div>
+        
+        <CrossLinks />
     </div>
 
     <router-view v-slot="{Component, route}">
@@ -40,8 +42,10 @@
     import { mapState } from 'vuex';
     //require('./assets/fonts/YanoneKaffeesatz-Regular.ttf');
     import "./App.scss";
+    import CrossLinks from './views/CrossLinks.vue';
 
     export default defineComponent({
+        components: {CrossLinks},
         computed: {
             ...mapState(['logins'])
         },
