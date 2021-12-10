@@ -1,10 +1,10 @@
 <template>
     <div style="margin-left: 1rem; display: flex; align-items: center;">
-    
+
         <div style="display: flex; align-items: center; text-shadow: none;"> <!-- className="mr-2 flex space-x-2" -->
 
             <a class="cross-link" href="https://maxzz.github.io/test-pm">
-                <div class="boxed-link" title="Reload this page">1</div>
+                <div class="boxed-link" title="Open test-pm">1</div>
             </a>
 
             <a class="cross-link" href="https://maxzz.github.io/test-pm-second">
@@ -12,7 +12,7 @@
             </a>
 
             <a class="cross-link" href="https://maxzz.github.io/test-pm-domain-logins">
-                <div class="boxed-link" title="Open test-pm-domain-logins">3</div>
+                <div class="boxed-link" title="Reload this page">3</div>
             </a>
 
         </div>
