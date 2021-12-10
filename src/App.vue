@@ -13,7 +13,7 @@
             <router-link :to="{name: 'ChangeB', query: { from: 'homeToChangeB' }}">Change {{logins.b.disp}}</router-link>
             <!-- <router-link to="/about">About</router-link> -->
         </div>
-        
+
         <CrossLinks />
     </div>
 
@@ -99,7 +99,7 @@
     }
 
     .nav {
-        height: 4rem;
+        height: 4.375rem;
 
         display: flex;
         align-items: center;
