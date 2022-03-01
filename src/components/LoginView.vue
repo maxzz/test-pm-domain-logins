@@ -59,10 +59,30 @@
                         <input id="pass" :type="passwordType" v-model="thisPass" placeholder="Password" autocomplete="current-password">
                     </div>
     
-                    <!-- Actions -->
                     <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal password</label>
-                    <button @click.prevent="onSubmit($event, formClass(), isClogin)" class="g-btn">Login</button>
+
+                    <!-- Actions -->
+                    <div class="actions-group">
+                        <div class="timer">
+                            <div class="">Timer</div>
+                            <input class="timer-value" type="text" value="11">
+                        </div>
+
+                        <button class="g-btn" @click.prevent="onSubmit($event, formClass(), isClogin)">Login</button>
+                    </div>
+                    
                 </div>
+
+                <!-- Actions -->
+                <!-- <div class="actions-group">
+                    <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal password</label>
+                    <div class="timer">
+                        <div class="">Timer</div>
+                        <input class="timer-value" type="text" value="11">
+                    </div>
+                    <button class="g-btn" @click.prevent="onSubmit($event, formClass(), isClogin)">Login</button>
+                </div> -->
+
             </form>
         </div>
         </transition>
@@ -154,6 +174,30 @@
         }
     });
 </script>
+
+<style lang="scss" scoped>
+    .actions-group {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+
+        .timer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            :first-child {
+                background-color: red;
+            }
+            input[type=text] {
+                color: red;
+                width: 3rem;
+                min-width: 3rem;
+            }
+
+        }
+    }
+</style>
 
 <style lang="scss" scoped>
     @use "sass:math";
