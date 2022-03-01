@@ -89,7 +89,7 @@
 </template>
 
 <script lang="ts">
-    import { computed, defineComponent, reactive, ref } from 'vue';
+    import { computed, defineComponent, onMounted, reactive, ref } from 'vue';
     import { mapState, useStore } from 'vuex';
     import { POSITION, TYPE, useToast } from 'vue-toastification';
     import { PayloadLoggedIn, PayloadLoginCredentials, IStore } from '../store';
@@ -154,27 +154,25 @@
 
             const intervalUse = computed(() => store.state.settings.intervalUse);
             const intervalUseSet = (payload: Event) => {
-                const el = payload.target as HTMLInputElement;
-                store.dispatch('setIntervalUse', el.checked);
+                const isEnabled = (payload.target as HTMLInputElement).checked;
+                store.dispatch('setIntervalUse', isEnabled);
             };
-            //const intervalVal = computed(() => store.state.settings.intervalVal);
-            const intervalVal = computed(() => {
-                //console.log('computed intervalVal', intervalVal.value, 'store', store.state.settings.intervalVal);
-                return store.state.settings.intervalVal;
-            });
+            const intervalVal = computed(() => store.state.settings.intervalVal);
             const intervalValSet = (payload: Event) => {
-                const el = payload.target as HTMLInputElement;
-                let num = +el.value;
-                //console.log('num', num, 'intervalVal.value', intervalVal.value);
+                let num = +(payload.target as HTMLInputElement).value;
                 intervalEnabled.value = intervalIsValid(num);
                 if (!intervalEnabled.value) {
                     num = intervalVal.value;
                 }
                 store.dispatch('setIntervalVal', num);
             };
-
             const intervalEnabled = ref(true);
             const intervalIsValid = (v: number) => !isNaN(v) && v > 0 && v <= 900;
+
+            let intervalID = 0;
+            function startInterval(runNow: boolean) {
+                intervalID = setTimeout(() => {}, intervalVal.value);
+            }
 
             const setLogged = (form: string, val: boolean) => {
                 store.dispatch('loggedIn', {form: form, val} as PayloadLoggedIn);
@@ -183,6 +181,11 @@
             const setLoginCredentials = (form: string, user: string, pass: string) => {
                 store.dispatch('loginCredentials', {form, user, pass} as PayloadLoginCredentials);
             };
+
+            onMounted(() => {
+                console.log('onMounted, intervalUse', intervalUse.value);
+                intervalUse.value && startInterval(true);
+            })
 
             const toast = useToast();
 
