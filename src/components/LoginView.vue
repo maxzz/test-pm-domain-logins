@@ -50,7 +50,7 @@
                     <SvgLogin />
                 </div>
 
-                <div v-if="intervalUse" class="">{{intervalCountdown}}</div>
+                <div v-if="intervalUse" class="">Reload in {{intervalCountdown}}</div>
 
                 <div class="fields">
                     <!-- Username -->
@@ -73,15 +73,21 @@
                     <!-- Actions -->
                     <div class="actions-group">
                         <div class="timer-group" title="Page auto-refresh interval in seconds. Valid range is [1...900].">
-                            <input type="checkbox" id="intervalUse" :disabled="!intervalEnabled" :checked="intervalUse" @input="intervalUseSet">
-                            <label class="timer-group__label" for="intervalUse">Interval</label>
+
+                            <!-- <input class="timer-group__check" type="checkbox" id="intervalUse" :disabled="!intervalEnabled" :checked="intervalUse" @input="intervalUseSet">
+                            <label class="timer-group__label" for="intervalUse">Interval</label> -->
+
+                            <label class="timer-group__label" for="intervalUse">
+                                <input class="timer-group__check" type="checkbox" id="intervalUse" :disabled="!intervalEnabled" :checked="intervalUse" @input="intervalUseSet">
+                                <span class="timer-group__text">Interval</span>
+                            </label>
+
                             <input v-if="!intervalUse" class="timer-value" type="text" :value="intervalVal" @input="intervalValSet">
                             <div v-if="!intervalUse" class="">sec</div>
                         </div>
 
                         <button class="g-btn" @click.prevent="onSubmit($event, formClass(), isClogin)">Login</button>
                     </div>
-                    
                 </div>
             </form>
         </div>
@@ -248,13 +254,17 @@
             display: flex;
             align-items: center;
 
-            :first-child {
-                margin-right: .2rem;
-                user-select: none;
-            }
             .timer-group__label {
-                user-select: none;
-                font-size: .75rem;
+                display: flex;
+                align-items: center;
+
+                .timer-group__check {
+                    user-select: none;
+                }
+                .timer-group__text {
+                    user-select: none;
+                    font-size: .75rem;
+                }
             }
             input[type=text] {
                 padding-top: .4rem;
