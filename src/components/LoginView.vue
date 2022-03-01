@@ -50,7 +50,8 @@
                     <SvgLogin />
                 </div>
 
-                <div v-if="!intervalUse" class="reload-countdown">
+                <!-- Countdown timer  -->
+                <div v-if="intervalUse" class="reload-countdown">
                     <span>Reload in</span>
                     <span>{{intervalCountdown}}</span>
                 </div>
@@ -293,6 +294,9 @@
         display: flex;
         align-items: baseline;
         color: rgb(255, 115, 0);
+        text-shadow: 1px 1px 2px #710000cc, -1px -1px 2px #ffffff66;
+        font-size: 1.2rem;
+        letter-spacing: .05rem;
 
         :last-child {
             margin-left: .2rem;
