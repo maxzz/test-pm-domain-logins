@@ -71,9 +71,9 @@
                     <!-- Actions -->
                     <div class="actions-group">
                         <div class="timer-group" title="Refresh interval in seconds">
-                            <input type="checkbox" v-model="intervalUse">
-                            <div class="">Interval</div>
-                            <input v-if="intervalUse" class="timer-value" type="text" value="11">
+                            <input type="checkbox" id="intervalUse" v-model="intervalUse">
+                            <label class="timer-group__label" for="intervalUse">Interval</label>
+                            <input v-if="intervalUse" class="timer-value" type="text" v-model="intervalVal">
                             <div v-if="intervalUse" class="">sec</div>
                         </div>
 
@@ -155,8 +155,13 @@
             const intervalUse = ref(true);
             const intervalVal = ref(3);
 
-            const setLogged = (form: string, val: boolean) => store.dispatch('loggedIn', {form: form, val} as PayloadLoggedIn);
-            const setLoginCredentials = (form: string, user: string, pass: string) => store.dispatch('loginCredentials', {form, user, pass} as PayloadLoginCredentials);
+            const setLogged = (form: string, val: boolean) => {
+                store.dispatch('loggedIn', {form: form, val} as PayloadLoggedIn);
+            };
+
+            const setLoginCredentials = (form: string, user: string, pass: string) => {
+                store.dispatch('loginCredentials', {form, user, pass} as PayloadLoginCredentials);
+            };
 
             const toast = useToast();
 
@@ -194,13 +199,18 @@
                 margin-right: .2rem;
                 user-select: none;
             }
+            .timer-group__label {
+                user-select: none;
+            }
             input[type=text] {
-                color: red;
-                width: 3rem;
+                padding-top: .4rem;
+                margin-bottom: .3rem;
+                text-align: center;
+                width: 1.5rem;
+                min-width: 1.5rem;
                 height: 1.3rem;
                 line-height: 1.3rem;
                 font-size: .7rem;
-                min-width: 3rem;
                 margin-left: .2rem;
             }
             :last-child {
