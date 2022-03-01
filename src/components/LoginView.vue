@@ -32,7 +32,11 @@
                     </div>
 
                     <!-- Actions -->
-                    <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal passwords</label>
+                    <label class="reveal">
+                        <input type="checkbox" v-model="revealPasswords">
+                        <span class="reveal__label">Reveal password</span>
+                    </label>
+
                     <button @click.prevent="onSubmit($event, formClass(), isClogin)" class="g-btn">Change</button>
                 </div>
             </form>
@@ -59,30 +63,24 @@
                         <input id="pass" :type="passwordType" v-model="thisPass" placeholder="Password" autocomplete="current-password">
                     </div>
     
-                    <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal password</label>
+                    <label class="reveal">
+                        <input type="checkbox" v-model="revealPasswords">
+                        <span class="reveal__label">Reveal password</span>
+                    </label>
 
                     <!-- Actions -->
                     <div class="actions-group">
-                        <div class="timer">
-                            <div class="">Timer</div>
-                            <input class="timer-value" type="text" value="11">
+                        <div class="timer-group" title="Refresh interval in seconds">
+                            <input type="checkbox" v-model="intervalUse">
+                            <div class="">Interval</div>
+                            <input v-if="intervalUse" class="timer-value" type="text" value="11">
+                            <div v-if="intervalUse" class="">sec</div>
                         </div>
 
                         <button class="g-btn" @click.prevent="onSubmit($event, formClass(), isClogin)">Login</button>
                     </div>
                     
                 </div>
-
-                <!-- Actions -->
-                <!-- <div class="actions-group">
-                    <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal password</label>
-                    <div class="timer">
-                        <div class="">Timer</div>
-                        <input class="timer-value" type="text" value="11">
-                    </div>
-                    <button class="g-btn" @click.prevent="onSubmit($event, formClass(), isClogin)">Login</button>
-                </div> -->
-
             </form>
         </div>
         </transition>
@@ -154,6 +152,9 @@
             const revealPasswords = ref(false);
             const passwordType = computed(() => revealPasswords.value ? 'text' : 'password');
 
+            const intervalUse = ref(true);
+            const intervalVal = ref(3);
+
             const setLogged = (form: string, val: boolean) => store.dispatch('loggedIn', {form: form, val} as PayloadLoggedIn);
             const setLoginCredentials = (form: string, user: string, pass: string) => store.dispatch('loginCredentials', {form, user, pass} as PayloadLoginCredentials);
 
@@ -167,6 +168,10 @@
                 passwords,
                 revealPasswords,
                 passwordType,
+
+                intervalUse,
+                intervalVal,
+
                 setLogged,
                 setLoginCredentials,
                 toast,
@@ -179,22 +184,29 @@
     .actions-group {
         display: flex;
         align-items: center;
-        justify-items: center;
+        justify-content: space-between;
 
-        .timer {
+        .timer-group {
             display: flex;
             align-items: center;
-            justify-content: center;
 
             :first-child {
-                background-color: red;
+                margin-right: .2rem;
+                user-select: none;
             }
             input[type=text] {
                 color: red;
                 width: 3rem;
+                height: 1.3rem;
+                line-height: 1.3rem;
+                font-size: .7rem;
                 min-width: 3rem;
+                margin-left: .2rem;
             }
-
+            :last-child {
+                margin-left: .1rem;
+                font-size: .65rem;
+            }
         }
     }
 </style>
@@ -335,6 +347,8 @@
         }
 
         .reveal {
+            display: flex;
+            
             user-select: none;
             white-space: nowrap;
             color: $form-lowtext-color;
@@ -342,6 +356,9 @@
             input:focus {
                 outline: none;
             }
+        }
+        .reveal__label {
+            margin-left: .2rem;
         }
 
         button {
