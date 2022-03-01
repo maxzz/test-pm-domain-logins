@@ -38,7 +38,7 @@ function defaultStore(): IStore {
         },
         settings: {
             reveal: false,
-            intervalUse: false,
+            intervalUse: true,
             intervalVal: 3,
         }
     };
@@ -49,6 +49,7 @@ function initialStoreData() {
     let st;
     try {
         st = str && JSON.parse(str); //TODO: this is weak data structure validation.
+        st = {...defaultStore(), ...st };
     } catch (error) {
     }
     !st && (st = defaultStore());

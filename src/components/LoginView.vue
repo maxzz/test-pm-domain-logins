@@ -71,7 +71,7 @@
                     <!-- Actions -->
                     <div class="actions-group">
                         <div class="timer-group" title="Refresh interval in seconds">
-                            <input type="checkbox" id="intervalUse" v-model="intervalUse">
+                            <input type="checkbox" id="intervalUse" :checked="intervalUse" @input="intervalUseSet">
                             <label class="timer-group__label" for="intervalUse">Interval</label>
                             <input v-if="intervalUse" class="timer-value" type="text" v-model="intervalVal">
                             <div v-if="intervalUse" class="">sec</div>
@@ -152,7 +152,12 @@
             const revealPasswords = ref(false);
             const passwordType = computed(() => revealPasswords.value ? 'text' : 'password');
 
-            const intervalUse = ref(true);
+            const intervalUse = computed(() => store.state.settings.intervalUse);
+            const intervalUseSet = (payload: Event) => {
+                const el = payload.target as HTMLInputElement;
+                console.log('va', el.checked);
+                store.dispatch('setIntervalUse', el.checked);
+            };
             const intervalVal = ref(3);
 
             const setLogged = (form: string, val: boolean) => {
@@ -175,6 +180,7 @@
                 passwordType,
 
                 intervalUse,
+                intervalUseSet,
                 intervalVal,
 
                 setLogged,
@@ -232,9 +238,9 @@
         transition: all 14s ease;
     }    
 
-    .transitionview-enter-to {
+    /* .transitionview-enter-to {
 
-    }    
+    }     */
 
     $form-lowtext-color: darken(#f00, 30%);
 
