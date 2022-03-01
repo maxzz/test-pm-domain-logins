@@ -70,11 +70,11 @@
 
                     <!-- Actions -->
                     <div class="actions-group">
-                        <div class="timer-group" title="Refresh interval in seconds">
-                            <input type="checkbox" id="intervalUse" :checked="intervalUse" @input="intervalUseSet">
+                        <div class="timer-group" title="Page auto-refresh interval in seconds">
+                            <input type="checkbox" id="intervalUse" :disabled="!intervalEnabled" :checked="intervalUse" @input="intervalUseSet">
                             <label class="timer-group__label" for="intervalUse">Interval</label>
-                            <input v-if="intervalUse" class="timer-value" type="text" :value="intervalVal" @input="intervalValSet">
-                            <div v-if="intervalUse" class="">sec</div>
+                            <input v-if="!intervalUse" class="timer-value" type="text" :value="intervalVal" @input="intervalValSet">
+                            <div v-if="!intervalUse" class="">sec</div>
                         </div>
 
                         <button class="g-btn" @click.prevent="onSubmit($event, formClass(), isClogin)">Login</button>
@@ -157,16 +157,23 @@
                 const el = payload.target as HTMLInputElement;
                 store.dispatch('setIntervalUse', el.checked);
             };
-            const intervalVal = computed(() => store.state.settings.intervalVal);
+            // const intervalVal = computed(() => store.state.settings.intervalVal);
+            const intervalVal = computed(() => {
+                console.log('computed intervalVal', intervalVal.value, 'store', store.state.settings.intervalVal);
+                return store.state.settings.intervalVal;
+            });
             const intervalValSet = (payload: Event) => {
                 const el = payload.target as HTMLInputElement;
                 let num = +el.value;
-                //console.log('num', num);
-                if (isNaN(num)) {
+                console.log('num', num, 'intervalVal.value', intervalVal.value);
+                intervalEnabled.value = !isNaN(num);
+                if (!intervalEnabled.value) {
                     num = intervalVal.value;
                 }
                 store.dispatch('setIntervalVal', num);
             };
+
+            const intervalEnabled = ref(true);
 
             const setLogged = (form: string, val: boolean) => {
                 store.dispatch('loggedIn', {form: form, val} as PayloadLoggedIn);
@@ -191,6 +198,7 @@
                 intervalUseSet,
                 intervalVal,
                 intervalValSet,
+                intervalEnabled,
 
                 setLogged,
                 setLoginCredentials,
