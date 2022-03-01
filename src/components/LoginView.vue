@@ -4,6 +4,7 @@
 
         <transition name="transitionview">
         <div v-if="isClogin">
+            <!-- Change password form template -->
             <form class="form">
                 <div class="form-name">{{currentForm.disp}}</div>
                 <div class="form-logo">
@@ -11,24 +12,33 @@
                 </div>
                 <div class="fields">
                     <input area-hidden="true" type="email" name="username" autocomplete="username" value="maxzz" style="display: none">
+
+                    <!-- Current password -->
                     <label for="pass">Current password</label>
                     <div>
                         <input id="cpass1" :type="passwordType" v-model="passwords.p1" placeholder="Current password" autocomplete="old-password">
                     </div>
+
+                    <!-- New password -->
                     <label for="pass">New password</label>
                     <div>
                         <input id="cpass2" :type="passwordType" v-model="passwords.p2" placeholder="New password" autocomplete="current-password">
                     </div>
+
+                    <!-- Confirm new password -->
                     <label for="pass">Confirm new password</label>
                     <div>
                         <input id="cpass3" :type="passwordType" v-model="passwords.p3" placeholder="Confirm new password" autocomplete="confirm-password">
                     </div>
+
+                    <!-- Actions -->
                     <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal passwords</label>
                     <button @click.prevent="onSubmit($event, formClass(), isClogin)" class="g-btn">Change</button>
                 </div>
             </form>
         </div>
         <div v-else>
+            <!-- Login form template -->
             <form class="form">
                 <div class="form-name">{{currentForm.disp}}</div>
 
@@ -37,17 +47,19 @@
                 </div>
 
                 <div class="fields">
+                    <!-- Username -->
                     <label for="user">Username</label>
                     <div>
                         <input id="user" type="text" v-model="thisUser" placeholder="Username" autocomplete="username">
                     </div>
     
+                    <!-- Password -->
                     <label for="pass">Password</label>
-
                     <div>
                         <input id="pass" :type="passwordType" v-model="thisPass" placeholder="Password" autocomplete="current-password">
                     </div>
     
+                    <!-- Actions -->
                     <label class="reveal"><input type="checkbox" v-model="revealPasswords">&nbsp;&nbsp;Reveal password</label>
                     <button @click.prevent="onSubmit($event, formClass(), isClogin)" class="g-btn">Login</button>
                 </div>
