@@ -50,6 +50,8 @@
                     <SvgLogin />
                 </div>
 
+                <div v-if="intervalUse" class="">{{intervalCountdown}}</div>
+
                 <div class="fields">
                     <!-- Username -->
                     <label for="user">Username</label>
@@ -155,10 +157,7 @@
             const intervalUse = computed(() => store.state.settings.intervalUse);
             const intervalUseSet = (payload: Event) => {
                 const isEnabled = (payload.target as HTMLInputElement).checked;
-                if (!isEnabled) {
-                    clearTimeout(intervalID);
-                    intervalID = 0;
-                }
+                startInterval(isEnabled);
                 store.dispatch('setIntervalUse', isEnabled);
             };
             const intervalVal = computed(() => store.state.settings.intervalVal);
@@ -172,19 +171,31 @@
             };
             const intervalEnabled = ref(true);
             const intervalIsValid = (v: number) => !isNaN(v) && v > 0 && v <= 900;
+            const intervalCountdown = ref(0);
 
-            let intervalID = 0;
+            let reloadTimeoutID = 0;
+            let countdownID = 0;
             function startInterval(runNow: boolean) {
                 if (runNow) {
-                    clearTimeout(intervalID);
-                    intervalID = setTimeout(() => {
-                        intervalID = 0;
+                    clearTimeout(reloadTimeoutID);
+                    reloadTimeoutID = setTimeout(() => {
+                        reloadTimeoutID = 0;
                         window.open(window.location.href, '_self');
                         console.log('timeout', window.location);
                     }, intervalVal.value * 1000);
+
+                    clearInterval(countdownID);
+                    countdownID = 0;
+                    intervalCountdown.value = intervalVal.value;
+                    countdownID = setInterval(() => {
+                        intervalCountdown.value--;
+                    }, 1000);
                 } else {
-                    clearTimeout(intervalID);
-                    intervalID = 0;
+                    clearTimeout(reloadTimeoutID);
+                    reloadTimeoutID = 0;
+
+                    clearInterval(countdownID);
+                    countdownID = 0;
                 }
             }
 
@@ -217,6 +228,7 @@
                 intervalVal,
                 intervalValSet,
                 intervalEnabled,
+                intervalCountdown,
 
                 setLogged,
                 setLoginCredentials,
