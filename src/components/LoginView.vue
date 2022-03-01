@@ -161,11 +161,11 @@
             const intervalValSet = (payload: Event) => {
                 const el = payload.target as HTMLInputElement;
                 let num = +el.value;
+                //console.log('num', num);
                 if (isNaN(num)) {
                     num = intervalVal.value;
-                } else {
-                    store.dispatch('setIntervalVal', num);
                 }
+                store.dispatch('setIntervalVal', num);
             };
 
             const setLogged = (form: string, val: boolean) => {
