@@ -73,7 +73,7 @@
                         <div class="timer-group" title="Refresh interval in seconds">
                             <input type="checkbox" id="intervalUse" :checked="intervalUse" @input="intervalUseSet">
                             <label class="timer-group__label" for="intervalUse">Interval</label>
-                            <input v-if="intervalUse" class="timer-value" type="text" v-model="intervalVal">
+                            <input v-if="intervalUse" class="timer-value" type="text" :value="intervalVal" @input="intervalValSet">
                             <div v-if="intervalUse" class="">sec</div>
                         </div>
 
@@ -155,10 +155,15 @@
             const intervalUse = computed(() => store.state.settings.intervalUse);
             const intervalUseSet = (payload: Event) => {
                 const el = payload.target as HTMLInputElement;
-                console.log('va', el.checked);
+                //console.log('va', el.checked);
                 store.dispatch('setIntervalUse', el.checked);
             };
-            const intervalVal = ref(3);
+            const intervalVal = computed(() => store.state.settings.intervalVal);
+            const intervalValSet = (payload: Event) => {
+                const el = payload.target as HTMLInputElement;
+                console.log('va', el.value);
+                store.dispatch('setIntervalVal', el.value);
+            };
 
             const setLogged = (form: string, val: boolean) => {
                 store.dispatch('loggedIn', {form: form, val} as PayloadLoggedIn);
@@ -182,6 +187,7 @@
                 intervalUse,
                 intervalUseSet,
                 intervalVal,
+                intervalValSet,
 
                 setLogged,
                 setLoginCredentials,
