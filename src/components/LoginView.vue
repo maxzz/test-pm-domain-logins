@@ -155,14 +155,17 @@
             const intervalUse = computed(() => store.state.settings.intervalUse);
             const intervalUseSet = (payload: Event) => {
                 const el = payload.target as HTMLInputElement;
-                //console.log('va', el.checked);
                 store.dispatch('setIntervalUse', el.checked);
             };
             const intervalVal = computed(() => store.state.settings.intervalVal);
             const intervalValSet = (payload: Event) => {
                 const el = payload.target as HTMLInputElement;
-                console.log('va', el.value);
-                store.dispatch('setIntervalVal', el.value);
+                let num = +el.value;
+                if (isNaN(num)) {
+                    num = intervalVal.value;
+                } else {
+                    store.dispatch('setIntervalVal', num);
+                }
             };
 
             const setLogged = (form: string, val: boolean) => {
