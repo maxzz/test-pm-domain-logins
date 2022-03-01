@@ -155,6 +155,10 @@
             const intervalUse = computed(() => store.state.settings.intervalUse);
             const intervalUseSet = (payload: Event) => {
                 const isEnabled = (payload.target as HTMLInputElement).checked;
+                if (!isEnabled) {
+                    clearTimeout(intervalID);
+                    intervalID = 0;
+                }
                 store.dispatch('setIntervalUse', isEnabled);
             };
             const intervalVal = computed(() => store.state.settings.intervalVal);
@@ -171,7 +175,17 @@
 
             let intervalID = 0;
             function startInterval(runNow: boolean) {
-                intervalID = setTimeout(() => {}, intervalVal.value);
+                if (runNow) {
+                    clearTimeout(intervalID);
+                    intervalID = setTimeout(() => {
+                        intervalID = 0;
+                        window.open(window.location.href, '_self');
+                        console.log('timeout', window.location);
+                    }, intervalVal.value * 1000);
+                } else {
+                    clearTimeout(intervalID);
+                    intervalID = 0;
+                }
             }
 
             const setLogged = (form: string, val: boolean) => {
