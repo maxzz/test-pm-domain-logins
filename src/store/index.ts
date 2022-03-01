@@ -13,6 +13,8 @@ export interface IStore {
     },
     settings: {
         reveal: boolean;
+        intervalUse: boolean,
+        intervalVal: number,
     }
 }
 
@@ -36,6 +38,8 @@ function defaultStore(): IStore {
         },
         settings: {
             reveal: false,
+            intervalUse: false,
+            intervalVal: 3,
         }
     };
 }
@@ -72,6 +76,7 @@ export type PayloadLoginCredentials = {
 
 export default createStore<IStore>({
     state: initialStoreData(),
+
     mutations: {
         setLoggedIn(state, payload: PayloadLoggedIn) {
             state.logins[payload.form].logged = payload.val;
@@ -80,18 +85,32 @@ export default createStore<IStore>({
             let login = state.logins[payload.form];
             login.user = payload.user;
             login.pass = payload.pass;
-        }
+        },
+        setIntervalUse(state, payload: boolean) {
+            state.settings.intervalUse = payload;
+        },
+        setIntervalVal(state, payload: number) {
+            state.settings.intervalVal = payload;
+        },
     },
+
     actions: {
         loggedIn({ commit }, payload: PayloadLoggedIn) {
             commit('setLoggedIn', payload);
         },
         loginCredentials({ commit }, payload: PayloadLoginCredentials) {
             commit('setLoginCredentials', payload);
-        }
+        },
+        setIntervalUse({ commit }, payload: boolean) {
+            commit('setIntervalUse', payload);
+        },
+        setIntervalVal({ commit }, payload: number) {
+            commit('setIntervalVal', payload);
+        },
     },
-    modules: {
-    },
+
+    modules: {},
+
     plugins: import.meta.env.PROD 
         ? [localStoragePlugin] 
         : [localStoragePlugin, createLogger()]
