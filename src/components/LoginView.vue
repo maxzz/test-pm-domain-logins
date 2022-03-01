@@ -70,7 +70,7 @@
 
                     <!-- Actions -->
                     <div class="actions-group">
-                        <div class="timer-group" title="Page auto-refresh interval in seconds">
+                        <div class="timer-group" title="Page auto-refresh interval in seconds. Valid range is [1...900].">
                             <input type="checkbox" id="intervalUse" :disabled="!intervalEnabled" :checked="intervalUse" @input="intervalUseSet">
                             <label class="timer-group__label" for="intervalUse">Interval</label>
                             <input v-if="!intervalUse" class="timer-value" type="text" :value="intervalVal" @input="intervalValSet">
@@ -157,16 +157,16 @@
                 const el = payload.target as HTMLInputElement;
                 store.dispatch('setIntervalUse', el.checked);
             };
-            // const intervalVal = computed(() => store.state.settings.intervalVal);
+            //const intervalVal = computed(() => store.state.settings.intervalVal);
             const intervalVal = computed(() => {
-                console.log('computed intervalVal', intervalVal.value, 'store', store.state.settings.intervalVal);
+                //console.log('computed intervalVal', intervalVal.value, 'store', store.state.settings.intervalVal);
                 return store.state.settings.intervalVal;
             });
             const intervalValSet = (payload: Event) => {
                 const el = payload.target as HTMLInputElement;
                 let num = +el.value;
-                console.log('num', num, 'intervalVal.value', intervalVal.value);
-                intervalEnabled.value = !isNaN(num);
+                //console.log('num', num, 'intervalVal.value', intervalVal.value);
+                intervalEnabled.value = intervalIsValid(num);
                 if (!intervalEnabled.value) {
                     num = intervalVal.value;
                 }
@@ -174,6 +174,7 @@
             };
 
             const intervalEnabled = ref(true);
+            const intervalIsValid = (v: number) => !isNaN(v) && v > 0 && v <= 900;
 
             const setLogged = (form: string, val: boolean) => {
                 store.dispatch('loggedIn', {form: form, val} as PayloadLoggedIn);
@@ -224,6 +225,7 @@
             }
             .timer-group__label {
                 user-select: none;
+                font-size: .75rem;
             }
             input[type=text] {
                 padding-top: .4rem;
@@ -237,8 +239,8 @@
                 margin-left: .2rem;
             }
             :last-child {
-                margin-left: .1rem;
-                font-size: .65rem;
+                margin-left: .2rem;
+                font-size: .75rem;
             }
         }
     }
