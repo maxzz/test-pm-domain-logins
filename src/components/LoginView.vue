@@ -50,7 +50,10 @@
                     <SvgLogin />
                 </div>
 
-                <div v-if="intervalUse" class="">Reload in {{intervalCountdown}}</div>
+                <div v-if="!intervalUse" class="reload-countdown">
+                    <span>Reload in</span>
+                    <span>{{intervalCountdown}}</span>
+                </div>
 
                 <div class="fields">
                     <!-- Username -->
@@ -72,16 +75,15 @@
 
                     <!-- Actions -->
                     <div class="actions-group">
-                        <div class="timer-group" title="Page auto-refresh interval in seconds. Valid range is [1...900].">
+                        <div class="timer-group" title="Page auto-refresh interval in seconds. Valid range is [1...900]">
 
-                            <!-- <input class="timer-group__check" type="checkbox" id="intervalUse" :disabled="!intervalEnabled" :checked="intervalUse" @input="intervalUseSet">
-                            <label class="timer-group__label" for="intervalUse">Interval</label> -->
-
+                            <!-- Checkbox -->
                             <label class="timer-group__label" for="intervalUse">
                                 <input class="timer-group__check" type="checkbox" id="intervalUse" :disabled="!intervalEnabled" :checked="intervalUse" @input="intervalUseSet">
                                 <span class="timer-group__text">Interval</span>
                             </label>
 
+                            <!-- Interval input -->
                             <input v-if="!intervalUse" class="timer-value" type="text" :value="intervalVal" @input="intervalValSet">
                             <div v-if="!intervalUse" class="">sec</div>
                         </div>
@@ -257,6 +259,7 @@
             .timer-group__label {
                 display: flex;
                 align-items: center;
+                cursor: pointer;
 
                 .timer-group__check {
                     user-select: none;
@@ -281,6 +284,19 @@
                 margin-left: .2rem;
                 font-size: .75rem;
             }
+        }
+    }
+    .reload-countdown {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        display: flex;
+        align-items: baseline;
+        color: rgb(255, 115, 0);
+
+        :last-child {
+            margin-left: .2rem;
+            font-size: 1.5rem;
         }
     }
 </style>
