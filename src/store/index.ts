@@ -1,5 +1,7 @@
 import { createLogger, createStore, Store } from "vuex";
 
+//#region localStore
+
 export interface IStore {
     logins: {
         [key: string]: {
@@ -55,6 +57,8 @@ function localStoragePlugin(store: Store<IStore>) {
     })
 }
 
+//#endregion localStore
+
 export type PayloadLoggedIn = {
     form: 'a' | 'b';
     val: boolean;
@@ -88,5 +92,7 @@ export default createStore<IStore>({
     },
     modules: {
     },
-    plugins: import.meta.env.PROD ? [localStoragePlugin] : [localStoragePlugin, createLogger()]
+    plugins: import.meta.env.PROD 
+        ? [localStoragePlugin] 
+        : [localStoragePlugin, createLogger()]
 });
