@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import * as VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import LoginPageA from "../views/LoginPageA.vue";
 import LoginPageB from "../views/LoginPageB.vue";
 import PagePasswordChangeA from "../views/PagePasswordChangeA.vue";
 import PagePasswordChangeB from "../views/PagePasswordChangeB.vue";
 
-const routes: Array<RouteRecordRaw> = [
+const routes: Array<VueRouter.RouteRecordRaw> = [
     {
         path: "/",
         name: "Home",
@@ -48,8 +48,9 @@ const routes: Array<RouteRecordRaw> = [
     
 ];
 
-const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+const router = VueRouter.createRouter({
+    //history: VueRouter.createWebHistory(import.meta.env.BASE_URL),
+    history: VueRouter.createWebHashHistory(),
     routes
 });
 
