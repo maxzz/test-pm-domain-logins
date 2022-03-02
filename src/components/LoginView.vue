@@ -51,7 +51,7 @@
                 </div>
 
                 <!-- Countdown timer  -->
-                <div v-if="intervalUse" class="reload-countdown">
+                <div v-if="intervalUse" class="reload-countdown" :style="{color: 'rgb(255, 0, 0)'}">
                     <span>Reload in</span>
                     <span>{{intervalCountdown}}</span>
                 </div>
@@ -297,6 +297,7 @@
         text-shadow: 1px 1px 2px #710000cc, -1px -1px 2px #ffffff66;
         font-size: 1.2rem;
         letter-spacing: .05rem;
+        transition: color 5s;
 
         :last-child {
             margin-left: .2rem;
