@@ -61,15 +61,6 @@ function initialStoreData() {
                     ...st?.settings,
                 },
             };
-            // const df = defaultStore();
-            // st = {
-            //     ...df,
-            //     ...{
-            //         ...st?.logins?.a,
-            //         ...st?.logins?.b,
-            //         ...st?.settings,
-            //     },
-            // };
         }
     } catch (error) {
     }
