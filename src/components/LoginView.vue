@@ -142,7 +142,6 @@
                 } else {
                     this.setLoginCredentials(this.formName, this.thisUser, this.thisPass);
                     this.setLogged(this.formName, true);
-                    //this.startInterval(false);
                 }
                 this.$router.push({name: 'Home', query: {from: currentFormClass, form: isClogin ? 'passwordchange' : 'login'}});
             }
@@ -190,18 +189,14 @@
                     clearTimeout(reloadTimeoutID);
                     reloadTimeoutID = setTimeout(() => {
                         reloadTimeoutID = 0;
-                        //window.open(window.location.href, '_self');
                         window.location.reload();
-
-                        console.log('timeout', window.location);
                     }, intervalVal.value * 1000);
 
                     clearInterval(countdownID);
                     countdownID = 0;
+                    
                     intervalCountdown.value = intervalVal.value;
-                    countdownID = setInterval(() => {
-                        intervalCountdown.value--;
-                    }, 1000);
+                    countdownID = setInterval(() => intervalCountdown.value--, 1000);
                 } else {
                     clearTimeout(reloadTimeoutID);
                     reloadTimeoutID = 0;
@@ -219,17 +214,8 @@
                 store.dispatch('loginCredentials', {form, user, pass} as PayloadLoginCredentials);
             };
 
-            onMounted(() => {
-                console.log('onMounted, intervalUse', intervalUse.value, 'props', props);
-                startInterval(false);
-                if (intervalUse.value && !props.isClogin) {
-                    startInterval(true);
-                }
-            });
-
-            onUnmounted(() => {
-                startInterval(false);
-            });
+            onMounted(() => startInterval(intervalUse.value && !props.isClogin));
+            onUnmounted(() => startInterval(false));
 
             const toast = useToast();
 
@@ -248,7 +234,6 @@
                 intervalValSet,
                 intervalEnabled,
                 intervalCountdown,
-                //startInterval,
 
                 setLogged,
                 setLoginCredentials,
