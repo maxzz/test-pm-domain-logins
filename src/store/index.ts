@@ -46,13 +46,34 @@ function defaultStore(): IStore {
 
 function initialStoreData() {
     let str = localStorage.getItem(STORAGE_KEY);
-    let st;
+    let st: IStore;
     try {
-        st = str && JSON.parse(str); //TODO: this is weak data structure validation.
-        st = {...defaultStore(), ...st };
+        st = (str && JSON.parse(str)) as IStore; //TODO: this is weak data structure validation.
+        if (st) {
+            const df = defaultStore();
+            st = {
+                logins: {
+                    ...df.logins,
+                    ...st?.logins,
+                }, 
+                settings: {
+                    ...df.settings,
+                    ...st?.settings,
+                },
+            };
+            // const df = defaultStore();
+            // st = {
+            //     ...df,
+            //     ...{
+            //         ...st?.logins?.a,
+            //         ...st?.logins?.b,
+            //         ...st?.settings,
+            //     },
+            // };
+        }
     } catch (error) {
     }
-    !st && (st = defaultStore());
+    !st! && (st = defaultStore());
     return st;
 }
 
