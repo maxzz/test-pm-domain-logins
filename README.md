@@ -1,8 +1,8 @@
 ### About
 
-Application for testing several login and password change forms in one domain.
+Application for testing different login forms and password change in one domain.
 
-![](src/assets/previews/2021-12-06_2-09-30.png)
+![](src/assets/previews/2022-03-01_19-09-50.jpg)
 
 ### Other test pages
 
