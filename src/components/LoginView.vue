@@ -100,7 +100,7 @@
 </template>
 
 <script lang="ts">
-    import { computed, defineComponent, onMounted, reactive, ref } from 'vue';
+    import { computed, defineComponent, onMounted, onUnmounted, reactive, ref } from 'vue';
     import { mapState, useStore } from 'vuex';
     import { POSITION, TYPE, useToast } from 'vue-toastification';
     import { PayloadLoggedIn, PayloadLoginCredentials, IStore } from '../store';
@@ -142,6 +142,7 @@
                 } else {
                     this.setLoginCredentials(this.formName, this.thisUser, this.thisPass);
                     this.setLogged(this.formName, true);
+                    //this.startInterval(false);
                 }
                 this.$router.push({name: 'Home', query: {from: currentFormClass, form: isClogin ? 'passwordchange' : 'login'}});
             }
@@ -189,7 +190,9 @@
                     clearTimeout(reloadTimeoutID);
                     reloadTimeoutID = setTimeout(() => {
                         reloadTimeoutID = 0;
-                        window.open(window.location.href, '_self');
+                        //window.open(window.location.href, '_self');
+                        window.location.reload();
+
                         console.log('timeout', window.location);
                     }, intervalVal.value * 1000);
 
@@ -217,9 +220,16 @@
             };
 
             onMounted(() => {
-                console.log('onMounted, intervalUse', intervalUse.value);
-                intervalUse.value && startInterval(true);
-            })
+                console.log('onMounted, intervalUse', intervalUse.value, 'props', props);
+                startInterval(false);
+                if (intervalUse.value && !props.isClogin) {
+                    startInterval(true);
+                }
+            });
+
+            onUnmounted(() => {
+                startInterval(false);
+            });
 
             const toast = useToast();
 
@@ -238,6 +248,7 @@
                 intervalValSet,
                 intervalEnabled,
                 intervalCountdown,
+                //startInterval,
 
                 setLogged,
                 setLoginCredentials,

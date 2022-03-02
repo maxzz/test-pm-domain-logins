@@ -38,8 +38,8 @@ function defaultStore(): IStore {
         },
         settings: {
             reveal: false,
-            intervalUse: true,
-            intervalVal: 3,
+            intervalUse: false,
+            intervalVal: 20,
         }
     };
 }
