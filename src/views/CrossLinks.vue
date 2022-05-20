@@ -3,16 +3,20 @@
 
         <div style="display: flex; align-items: center; text-shadow: none;"> <!-- className="mr-2 flex space-x-2" -->
 
-            <a class="cross-link" href="https://maxzz.github.io/test-pm">
-                <div class="boxed-link" title="Open test-pm">1</div>
+            <a class="cross-link" :href=pageTitles.t0.href>
+                <div class="boxed-link" :title=pageTitles.t0.title>1</div>
             </a>
 
-            <a class="cross-link" href="https://maxzz.github.io/test-pm-second">
-                <div class="boxed-link" title="Open pm-test-second">2</div>
+            <a class="cross-link" :href=pageTitles.t1.href>
+                <div class="boxed-link" :title=pageTitles.t1.title>2</div>
             </a>
 
-            <a class="cross-link" href="https://maxzz.github.io/test-pm-domain-logins">
-                <div class="boxed-link" title="Reload this page">3</div>
+            <a class="cross-link" :href=pageTitles.re.href>
+                <div class="boxed-link" :title=pageTitles.re.title>3</div>
+            </a>
+
+            <a class="cross-link" :href=pageTitles.t3.href>
+                <div class="boxed-link" :title=pageTitles.t3.title>4</div>
             </a>
 
         </div>
@@ -28,8 +32,14 @@
 
 <script lang="ts">
     import { defineComponent } from 'vue';
+    import { pageTitles } from './xlinks';
 
     export default defineComponent({
+        setup() {
+            return {
+                pageTitles,
+            }
+        }
     });
 </script>
 
@@ -45,11 +55,20 @@
         height: 1.5rem;
         font-size: 0.75rem;
         line-height: 1rem;
+
         border-radius: 0.25rem;
         border: 1px solid #82868a;
         color: #82868a;
+
         display: grid;
         place-items: center;
+
+        &:hover {
+            transform: scale(1.2);
+            background-color: #184c76;
+            border: 1px solid white;
+            color: white;
+        }
     }
     .boxed-github {
         box-sizing: border-box;
